@@ -5,5 +5,5 @@ User can view the products but  needs to register on the site inorder to order t
 In addition, MONGODB serves as a backend to store bakery products lists data thus, the online bakery shopping project brings an entire bakery shop online, making it easy for both buyer and seller.
 
 
-[x] Added register form where formik yup validation is used. To install formikyup please do: npm install formik yup
+[x] Added register form where formik yup validation is used. To install formikyup please do: npm install formik yup.
 [x] bcrypt is used for hashing . To install bcrypt please do : npm install bcrypt.
