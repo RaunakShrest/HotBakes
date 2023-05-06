@@ -6,5 +6,5 @@ In addition, MONGODB serves as a backend to store bakery products lists data thu
 
 The codes are distributed in different branches.
 **
-**For Form validations : feature/form
+For form validations : feature/form
 **
