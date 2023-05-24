@@ -33,19 +33,22 @@ import {setToken} from '../../redux/reducerSlice/userSlice'
      .min(2, 'Too Short!')
      .max(50, 'Too Longgggg!')
      .required('Required'),
+
     Product_price: Yup.string()
      .min(2, 'Too Short!')
      .max(50, 'Too Long!')
      .required('Required'),
+
     Product_category:Yup.string()
      .required('Required'),
+
      Product_description: Yup.string()
     .required('Required')
 
  });
 
  const Product_Register = () => {
-
+   
   const [messageApi, contextHolder] = message.useMessage();
   const dispatch= useDispatch()
   const router= useRouter();
@@ -75,7 +78,6 @@ const handleLogout=()=>{
  }catch(err){
   messageApi.warning("Unable to register products") //data.msg is done to fetch data from server as server knows the real data.
   // real data is = whether the data  is (already exist or Register Sucesss!  in this scenario)
-
  }
 }  
 /*const handleCreateClick=()=>{
@@ -83,7 +85,6 @@ const handleLogout=()=>{
 }*/
    return(
     <div>
-      
       <Formik initialValues={{
           Product_name: '',
           Product_price: '',
@@ -106,19 +107,19 @@ const handleLogout=()=>{
             <p className={styles.formtitle}><h1>Product Panel</h1></p>
 
             <Field name="Productname" placeholder="ProductName" className={styles.inputbox}  />
-            {errors.Productname && touched.Productname ? <div className={styles.errorMessage}>{errors.Productname}</div> : null}
+            {errors.Product_name && touched.Product_name ? <div className={styles.errorMessage}>{errors.Product_name}</div> : null}
             <br/>
             <Field name="Price" placeholder="Price"className={styles.inputbox} />
-            {errors.Price && touched.Price ? <div className={styles.errorMessage}>{errors.Price}</div> : null}
+            {errors.Product_price && touched.Product_price ? <div className={styles.errorMessage}>{errors.Product_price}</div> : null}
             <br/>
 
               <Field name="Category"  placeholder="Category" className={styles.inputbox}/>
-              {errors.Category&& touched.Category  ? <div className={styles.Category}>{errors.Category }</div> : null}
+              {errors.Product_category&& touched.Product_category  ? <div className={styles.Category}>{errors.Product_category }</div> : null}
   
             <br/>
 
             <Field name="Description" placeholder="Description"className={styles.inputbox}/>
-            {errors.Description && touched.Description ? <div className={styles.Description}>{errors.Description}</div> : null}
+            {errors.Product_description && touched.Product_description ? <div className={styles.Description}>{errors.Product_description}</div> : null}
 
         <br/>
 
