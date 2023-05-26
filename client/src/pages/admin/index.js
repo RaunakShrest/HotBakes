@@ -30,20 +30,21 @@ import {setToken} from '../../redux/reducerSlice/userSlice'
 
  const ProductSchema = Yup.object().shape({
   Product_name: Yup.string()
-     .min(2, 'Too Short!')
-     .max(50, 'Too Longgggg!')
-     .required('Required'),
-
-    Product_price: Yup.string()
-     .min(2, 'Too Short!')
-     .max(50, 'Too Long!')
-     .required('Required'),
-
-    Product_category:Yup.string()
-     .required('Required'),
-
-     Product_description: Yup.string()
-    .required('Required')
+  .min(2, 'Too Short!')
+  .max(50, 'Too Longgggg!')
+  .required('Required'),
+  Product_price: Yup.string()
+  .min(2, 'Too Short!')
+  .max(50, 'Too Long!')
+  .required('Required'),
+  Product_category:Yup.string()
+  .min(10, 'Too Short!')
+  .max(10, 'Too Long!')
+  .required('Required'),
+  Product_description:Yup.string()
+  .min(10, 'Too Short!')
+  .max(10, 'Too Long!')
+  .required('Required'),
 
  });
 
@@ -56,6 +57,7 @@ import {setToken} from '../../redux/reducerSlice/userSlice'
 
 const handleLogout=()=>{
   dispatch(logout())
+  router.push('./login')
 }
 
   const registerProduct = async(values)=> {
@@ -89,10 +91,10 @@ const handleLogout=()=>{
           Product_name: '',
           Product_price: '',
           Product_category: '',
-          Product_discription:''
+          Product_description:''
 
         }}
-        validationSchema={ProductSchema}
+      // validationSchema={ProductSchema}
         onSubmit={values => {
           // same shape as initial values
           registerProduct(values)

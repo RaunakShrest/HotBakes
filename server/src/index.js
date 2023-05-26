@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const dbConnect = require('./connection/dbConnect')
 const userRoute = require('./routes/user')
+const productRoute = require('./routes/product')
 
 require('dotenv').config()
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.json())
 
 app.use(cors())
 app.use('/',userRoute)
+app.use('/',productRoute)
 
 
 app.listen(port, () => {

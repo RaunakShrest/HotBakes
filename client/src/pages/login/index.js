@@ -46,6 +46,7 @@ const Login  = ()=>{
           message.success("login successful");
           dispatch(setToken(data.token))
           dispatch(setRole(data.role))
+          router.push('/admin')
         } else {
           message.error("login failed, try again");
         }
@@ -54,6 +55,9 @@ const Login  = ()=>{
         messageApi.warning('Server issues, please try again');
       }
     }
+
+
+  
   
     const handleCreateClick = () => {
       router.push('/register')
@@ -112,8 +116,6 @@ const Login  = ()=>{
           </div>
         </div>
          
-        
-  
         </>
         
       )
