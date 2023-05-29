@@ -6,6 +6,7 @@ import React from 'react';
  import { useState } from 'react';
  import styles from './register.module.css';
  import { useRouter } from "next/router";
+
  const SignupSchema = Yup.object().shape({
   fullName: Yup.string()
      .min(2, 'Too Short!')
@@ -31,6 +32,7 @@ import React from 'react';
 //product_Register
  const Register = () => {
 
+  const[file,setFile]= useState(null)
 
   const [messageApi, contextHolder] = message.useMessage();
   const router= useRouter();
@@ -38,11 +40,17 @@ import React from 'react';
 
 
   const registerUser = async(values)=> {
+    var formData = new FormData();
+    const keys= Object.keys(values) // every time append garnu ko satta yo use gareko 
+    keys.forEach((item)=>{ //form ko detalis lai loop lagako
+      formData.append(item,values[item])
+    })
+    formData.append('avatar',file)
     
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values)
+     // headers: { 'Content-Type': 'application/json' },
+      body: formData
   };
 
   try{  
@@ -64,6 +72,11 @@ const handleCreateClick=()=>{
   router.push('/login')
 }
  
+const handleFileSave=(e)=>{
+  setFile(e.target.files[0])
+
+}
+
    return(
     <div>
       
@@ -106,7 +119,8 @@ const handleCreateClick=()=>{
             <Field name="role" placeholder="role" className={styles.inputbox}/>
             {errors.role && touched.role ? <div className={styles.errorMessage}>{errors.role}</div> : null}
             <br/>
-
+            <input type ="file" onChange={handleFileSave}></input>
+                  <br/>
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
             <br/>
             <br/>

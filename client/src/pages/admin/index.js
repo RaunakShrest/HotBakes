@@ -29,26 +29,26 @@ import { useDispatch } from 'react-redux';
 import {setToken} from '../../redux/reducerSlice/userSlice'
 
  const ProductSchema = Yup.object().shape({
-  Product_name: Yup.string()
+  productName: Yup.string()
   .min(2, 'Too Short!')
   .max(50, 'Too Longgggg!')
   .required('Required'),
-  Product_price: Yup.string()
+  productPrice: Yup.string()
   .min(2, 'Too Short!')
   .max(50, 'Too Long!')
   .required('Required'),
-  Product_category:Yup.string()
+  productCategory:Yup.string()
   .min(10, 'Too Short!')
   .max(10, 'Too Long!')
   .required('Required'),
-  Product_description:Yup.string()
+  productDescription:Yup.string()
   .min(10, 'Too Short!')
   .max(10, 'Too Long!')
   .required('Required'),
 
  });
 
- const Product_Register = () => {
+ const productRegister = () => {
    
   const [messageApi, contextHolder] = message.useMessage();
   const dispatch= useDispatch()
@@ -88,10 +88,10 @@ const handleLogout=()=>{
    return(
     <div>
       <Formik initialValues={{
-          Product_name: '',
-          Product_price: '',
-          Product_category: '',
-          Product_description:''
+          productName: '',
+          productPrice: '',
+          productCategory: '',
+          productDescription:''
 
         }}
       // validationSchema={ProductSchema}
@@ -108,20 +108,20 @@ const handleLogout=()=>{
             </div>
             <p className={styles.formtitle}><h1>Product Panel</h1></p>
 
-            <Field name="Productname" placeholder="ProductName" className={styles.inputbox}  />
-            {errors.Product_name && touched.Product_name ? <div className={styles.errorMessage}>{errors.Product_name}</div> : null}
+            <Field name="productName" placeholder="productName" className={styles.inputbox}  />
+            {errors.productName && touched.productName ? <div className={styles.errorMessage}>{errors.productName}</div> : null}
             <br/>
-            <Field name="Price" placeholder="Price"className={styles.inputbox} />
-            {errors.Product_price && touched.Product_price ? <div className={styles.errorMessage}>{errors.Product_price}</div> : null}
+            <Field name="productPrice" placeholder="productPrice"className={styles.inputbox} />
+            {errors.productPrice && touched.productPrice ? <div className={styles.errorMessage}>{errors.productPrice}</div> : null}
             <br/>
 
-              <Field name="Category"  placeholder="Category" className={styles.inputbox}/>
-              {errors.Product_category&& touched.Product_category  ? <div className={styles.Category}>{errors.Product_category }</div> : null}
+              <Field name="productCategory"  placeholder="productCategory" className={styles.inputbox}/>
+              {errors.productCategory&& touched.productCategory  ? <div className={styles.Category}>{errors.productCategory }</div> : null}
   
             <br/>
 
-            <Field name="Description" placeholder="Description"className={styles.inputbox}/>
-            {errors.Product_description && touched.Product_description ? <div className={styles.Description}>{errors.Product_description}</div> : null}
+            <Field name="productDescription" placeholder="productDescription"className={styles.inputbox}/>
+            {errors.productDescription && touched.productDescription ? <div className={styles.Description}>{errors.productDescription}</div> : null}
 
         <br/>
 
@@ -138,4 +138,4 @@ const handleLogout=()=>{
     </div>
   );
             }
- export default Product_Register;
+ export default productRegister;
