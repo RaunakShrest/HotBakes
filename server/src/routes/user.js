@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken')
 const upload = require('../middleware/uploadMiddleware')
 const path = require('path')
 const fs =require('fs')
-const User =require('../controller/user')
+const User =require('../controller/user');
+const Products = require('../model/product');
 
 router.post('/register', upload, User.registerUser)
 
@@ -45,12 +46,12 @@ router.get('/avatar/:id', async (req, res) => {
 })
 
 
-router.get('/users',async (req, res) => {
-  const userData = await Users.find()
+/*router.get('/product',async (req, res) => {
+  const productData = await Products.find()
   res.send({
-    userList: userData
+    productList: productData
   })
   
-})
+})*/
 
 module.exports=router;

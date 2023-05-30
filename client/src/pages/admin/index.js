@@ -62,14 +62,26 @@ const handleLogout=()=>{
 
   const registerProduct = async(values)=> {
     
-    const requestOptions = {
+    /* Orignal standatd: onst requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values)
+      body: JSON.stringify(values)  */
+
+
+      var formData = new FormData(); // when image file gets inserted
+    const keys= Object.keys(values) 
+    keys.forEach((item)=>{ 
+      formData.append(item,values[item])
+    })
+    formData.append('productAvatar',file)
+    
+    const requestOptions = {
+      method: 'POST',
+      body: formData
   };
 
   try{  
-    const res = await fetch('http://localhost:4000/products',requestOptions)
+    const res = await fetch('http://localhost:4000/product',requestOptions)
     console.log(res)
     const data= await res.json() //data server response bata aauxa 
   if(res && data.success){
@@ -82,6 +94,13 @@ const handleLogout=()=>{
   // real data is = whether the data  is (already exist or Register Sucesss!  in this scenario)
  }
 }  
+
+const[file,setFileProduct]= useState(null)
+
+const handleFileSaveProduct=(e)=>{
+  setFileProduct(e.target.files[0])
+
+}
 /*const handleCreateClick=()=>{
   router.push('/login')
 }*/
@@ -94,7 +113,7 @@ const handleLogout=()=>{
           productDescription:''
 
         }}
-      // validationSchema={ProductSchema}
+      //validationSchema={ProductSchema}
         onSubmit={values => {
           // same shape as initial values
           registerProduct(values)
@@ -124,7 +143,8 @@ const handleLogout=()=>{
             {errors.productDescription && touched.productDescription ? <div className={styles.Description}>{errors.productDescription}</div> : null}
 
         <br/>
-
+        <input type ="file" onChange={handleFileSaveProduct}></input>
+        <br/>
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
             <br/>
             <br/>
