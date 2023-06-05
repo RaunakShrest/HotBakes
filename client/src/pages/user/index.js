@@ -6,6 +6,7 @@ import { logout } from '../../redux/reducerSlice/userSlice'
 import image from "next/image"
 import CustomDrawer from '@/components/Nav'
 import { Router, useRouter } from 'next/router'
+import ProductList from '../products/productList'
 
 const Home = (props)=> {
   const router = useRouter();
@@ -13,18 +14,15 @@ const Home = (props)=> {
     const handleLogout = () => {
         dispatch(logout())  
       }
-      const handleProduct=()=>{
+      /*const handleProduct=()=>{
         router.push('/products')
 
-      }
+      } */
 
     return (
 
       <>
-   
         <div className={styles.main}>
-          
-
           <ul className={styles.navbar}>
           <li className={styles.navbarList}> <a className={styles.navbarText} href='#'>Home</a></li>
           <li className={styles.navbarList}> <a className={styles.navbarText} href='#'>Products</a></li>
@@ -33,12 +31,13 @@ const Home = (props)=> {
             
           </ul>
 
-        
           <div clasName={styles.logo}>
-      <img src="logo2.PNG" className={styles.imagelogo}></img>
-
-
+      <img src=" " className={styles.imagelogo}></img>
+      
           </div>   
+          
+         <ProductList/>
+         
         <button onClick={handleLogout} className={styles.logout}>Logout</button>
       </div>
 

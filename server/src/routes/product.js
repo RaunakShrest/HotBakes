@@ -104,11 +104,52 @@ router.get('/products',async (req, res) => {
   
   router.get('/product',async (req, res) => {
     const productData = await Products.find()
-    res.send({
-      productList: productData
+    if(productData.length>0){
+      res.json({
+        productsList:productData,
+      })
+    } else{
+    res.json("No products found")
+     
+    }})
+
+
+    router.get("/product/:id", async (req, res) => {
+      try{
+     const productDetailsList = await Products.findById(req.params.id);
+     if(!productDetailsList){
+      return res.send("No product details to show")
+     }
+      res.json({
+        productDetailList:productDetailsList
+      })
+     
+      }
+      catch(e)
+      {
+        console.error(e)
+      }
     })
+    router.get("/productAvatar/:id", async (req, res) => {
+      const productData = await Products.findById(req.params.id);
+      const productPhoto = path.join(
+        __dirname,
+        "../../uploads/productAvatar",
+        productData.productAvatar
+      );
+      const defaultImage = path.join(
+        __dirname,
+        "../../uploads/productAvatar",
+        productData.productAvatar
+      );
+      console.log(productPhoto)
+      if (fs.existsSync(productPhoto)) {
+        res.sendFile(productPhoto);
+      } else {
+        res.sendFile(defaultImage);
+      }
+    });
     
-  })
-  
+
   module.exports=router;
   

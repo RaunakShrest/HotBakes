@@ -30,20 +30,12 @@ import {setToken} from '../../redux/reducerSlice/userSlice'
 
  const ProductSchema = Yup.object().shape({
   productName: Yup.string()
-  .min(2, 'Too Short!')
-  .max(50, 'Too Longgggg!')
   .required('Required'),
   productPrice: Yup.string()
-  .min(2, 'Too Short!')
-  .max(50, 'Too Long!')
   .required('Required'),
   productCategory:Yup.string()
-  .min(10, 'Too Short!')
-  .max(10, 'Too Long!')
   .required('Required'),
   productDescription:Yup.string()
-  .min(10, 'Too Short!')
-  .max(10, 'Too Long!')
   .required('Required'),
 
  });
@@ -113,7 +105,7 @@ const handleFileSaveProduct=(e)=>{
           productDescription:''
 
         }}
-      //validationSchema={ProductSchema}
+      validationSchema={ProductSchema}
         onSubmit={values => {
           // same shape as initial values
           registerProduct(values)
@@ -135,12 +127,12 @@ const handleFileSaveProduct=(e)=>{
             <br/>
 
               <Field name="productCategory"  placeholder="productCategory" className={styles.inputbox}/>
-              {errors.productCategory&& touched.productCategory  ? <div className={styles.Category}>{errors.productCategory }</div> : null}
+              {errors.productCategory&& touched.productCategory  ? <div className={styles.errorMessage}>{errors.productCategory }</div> : null}
   
             <br/>
 
             <Field name="productDescription" placeholder="productDescription"className={styles.inputbox}/>
-            {errors.productDescription && touched.productDescription ? <div className={styles.Description}>{errors.productDescription}</div> : null}
+            {errors.productDescription && touched.productDescription ? <div className={styles.errorMessage}>{errors.productDescription}</div> : null}
 
         <br/>
         <input type ="file" onChange={handleFileSaveProduct}></input>

@@ -6,6 +6,7 @@ import AdminDashBoard from './admin'
 import Login from './login'
 import Navbar from '../components/Nav'
 import { useSelector } from 'react-redux'
+import ProductList from './products/productList'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -30,6 +31,8 @@ const Main = () => {
   return (
     <div>
       {role}
+
+    
     
       {token ? <Dashboard/> : <Auth/>}
     </div>

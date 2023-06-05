@@ -1,28 +1,20 @@
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
-const { Meta } = Cards;
-const Cards = () => (
-  <Card
-    style={{
-      width: 300,
-    }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-      <SettingOutlined key="setting" />,
-      <EditOutlined key="edit" />,
-      <EllipsisOutlined key="ellipsis" />,
-    ]}
-  >
-    <Meta
-      avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
-);
-export default Cards;
+import { useRouter } from 'next/router';
+import styles from '@/styles/Home.module.css'
+const productCard = (props) => {
+  const router = useRouter();
+
+  return (
+ 
+    <div className={styles.card} >
+      <img src={`http://localhost:4000/productAvatar/${props.item._id}`} width="220" height="120" />
+
+      <div className={styles.productName}>{props.item.productName}</div>
+
+      <div className={styles.productPrice}>{props.item.productPrice}</div>
+    </div>
+    
+   
+   
+  );
+};
+export default productCard;
