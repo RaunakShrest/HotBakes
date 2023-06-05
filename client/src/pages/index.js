@@ -30,8 +30,7 @@ const Main = () => {
   return (
     <div>
       {role}
-      <Navbar/>
-      {role? <Navbar/>:null}
+    
       {token ? <Dashboard/> : <Auth/>}
     </div>
   )

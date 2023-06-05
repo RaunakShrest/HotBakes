@@ -7,6 +7,7 @@ import { useFormik, Formik, Form, Field } from 'formik';
 import * as Yup from 'yup'
 import { useRouter } from "next/router";
 import { Button, message } from 'antd';
+import { setUserDetails } from '../../redux/reducerSlice/userSlice'
 
 const initialValues = {
     phoneNumber: '',
@@ -44,9 +45,9 @@ const Login  = ()=>{
         const data = await res.json()
         if (data.success) {
           message.success("login successful");
-          dispatch(setToken(data.token))
-          dispatch(setRole(data.role))
-          router.push('/admin')
+          dispatch(setUserDetails(data))
+          router.push('/');
+          //router.push('/admin')
         } else {
           message.error("login failed, try again");
         }

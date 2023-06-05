@@ -1,17 +1,50 @@
 import { useDispatch } from 'react-redux'
 import {setToken} from '../../redux/reducerSlice/userSlice'
+import { setUserDetails } from '../../redux/reducerSlice/userSlice'
 import { logout } from '../../redux/reducerSlice/userSlice'
+ import styles from '@/styles/Home.module.css'
+import image from "next/image"
+import CustomDrawer from '@/components/Nav'
+import { Router, useRouter } from 'next/router'
+
 const Home = (props)=> {
+  const router = useRouter();
     const dispatch = useDispatch()
     const handleLogout = () => {
-        dispatch(logout())
-        
+        dispatch(logout())  
       }
+      const handleProduct=()=>{
+        router.push('/products')
+
+      }
+
     return (
-        <div>
-        i am user page
-        <button onClick={handleLogout}>Logout</button>
+
+      <>
+   
+        <div className={styles.main}>
+          
+
+          <ul className={styles.navbar}>
+          <li className={styles.navbarList}> <a className={styles.navbarText} href='#'>Home</a></li>
+          <li className={styles.navbarList}> <a className={styles.navbarText} href='#'>Products</a></li>
+          <li className={styles.navbarList}>  <a className={styles.navbarText} href='#'>About us</a></li>
+          <li className={styles.navbarList}>  <a className={styles.navbarText}href='#'>Contact us</a></li>
+            
+          </ul>
+
+        
+          <div clasName={styles.logo}>
+      <img src="logo2.PNG" className={styles.imagelogo}></img>
+
+
+          </div>   
+        <button onClick={handleLogout} className={styles.logout}>Logout</button>
       </div>
+
+
+
+      </>
     )
 }
 

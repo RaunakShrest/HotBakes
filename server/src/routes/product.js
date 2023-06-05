@@ -88,6 +88,8 @@ router.get('/products',async (req, res) => {
   }) */
   
   router.get('/avatar/:id', async (req, res) => {
+
+    //fs le file ko disk system bata file khojxa and check garxa 
     const productData = await Products.findById(req.params.id)
     const productImage = path.join(__dirname, '../../uploads/productAvatar', productData.productAvatar )
     const defaultImage = path.join(__dirname, '../../uploads/productAvatar', productData.productAvatar )
