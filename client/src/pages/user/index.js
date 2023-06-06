@@ -22,6 +22,7 @@ const Home = (props)=> {
     return (
 
       <>
+      <div className={styles.scrollableContainer}>
         <div className={styles.main}>
           <ul className={styles.navbar}>
           <li className={styles.navbarList}> <a className={styles.navbarText} href='#'>Home</a></li>
@@ -39,6 +40,7 @@ const Home = (props)=> {
          <ProductList/>
          
         <button onClick={handleLogout} className={styles.logout}>Logout</button>
+      </div>
       </div>
 
 
