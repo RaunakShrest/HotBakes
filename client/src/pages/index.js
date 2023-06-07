@@ -30,7 +30,7 @@ const Main = () => {
 
   return (
     <div>
-      {role}
+    
 
     
     

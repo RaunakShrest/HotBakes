@@ -2,11 +2,15 @@ import { useDispatch } from 'react-redux'
 import {setToken} from '../../redux/reducerSlice/userSlice'
 import { setUserDetails } from '../../redux/reducerSlice/userSlice'
 import { logout } from '../../redux/reducerSlice/userSlice'
- import styles from '@/styles/Home.module.css'
+ //import styles from '@/styles/Home.module.css'
 import image from "next/image"
 import CustomDrawer from '@/components/Nav'
 import { Router, useRouter } from 'next/router'
 import ProductList from '../products/productList'
+import Header from '@/components/Header'
+import Banner from '@/components/banner'
+import ProductUI from '@/components/product'
+import Footer from '@/components/footer'
 
 const Home = (props)=> {
   const router = useRouter();
@@ -18,34 +22,18 @@ const Home = (props)=> {
         router.push('/products')
 
       } */
-
     return (
+      <div>
+      <Header/>
 
-      <>
-      <div className={styles.scrollableContainer}>
-        <div className={styles.main}>
-          <ul className={styles.navbar}>
-          <li className={styles.navbarList}> <a className={styles.navbarText} href='#'>Home</a></li>
-          <li className={styles.navbarList}> <a className={styles.navbarText} href='#'>Products</a></li>
-          <li className={styles.navbarList}>  <a className={styles.navbarText} href='#'>About us</a></li>
-          <li className={styles.navbarList}>  <a className={styles.navbarText}href='#'>Contact us</a></li>
-            
-          </ul>
+      <Banner/>
 
-          <div clasName={styles.logo}>
-      <img src=" " className={styles.imagelogo}></img>
-      
-          </div>   
-          
-         <ProductList/>
-         
-        <button onClick={handleLogout} className={styles.logout}>Logout</button>
+      <ProductUI/>
+
+      <Footer/>
+
+
       </div>
-      </div>
-
-
-
-      </>
     )
 }
 
