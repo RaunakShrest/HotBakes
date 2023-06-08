@@ -1,3 +1,5 @@
+import productRegister from "@/pages/admin";
+import ProductList from "@/pages/products/productList";
 import React from "react";
 
 
@@ -22,8 +24,10 @@ const ProductUI=()=>{
                     </p>
             
             </div>
-            <div className="max-2-screen-xl-mx-auto">
-             ProductList will be here.
+            <div className="max-2-screen-xl-mx-auto py-10 grid grid-cols-1 gap-10">
+                
+           <ProductList/>
+          
              </div>
              </div>
     )
