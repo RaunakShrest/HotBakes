@@ -24,7 +24,7 @@ const ProductUI=()=>{
                     </p>
             
             </div>
-            <div className="max-2-screen-xl-mx-auto py-10 grid grid-cols-1 gap-10">
+            <div className="max-2-screen-xl-mx-auto py-10 grid grid-cols-4 gap-10">
                 
            <ProductList/>
           

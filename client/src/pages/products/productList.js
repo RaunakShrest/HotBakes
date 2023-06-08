@@ -23,9 +23,10 @@ const ProductList = () => {
   
   return (
     <div className="main-card">
-      <h1 style={{textAlign:'center'}}>ProductList</h1>
+      <h1 style={{textAlign:'center'}}></h1>
       {productsList.length> 0 ? productsList.map((item)=>{
             return( <Card item={item}/>)
+
           }) : <Skeleton />}
       </div>
   );
