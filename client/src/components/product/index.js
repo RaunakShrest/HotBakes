@@ -3,7 +3,7 @@ import ProductList from "@/pages/products/productList";
 import React from "react";
 
 
-const ProductUI=()=>{
+const ProductUI=({products})=>{
 
     return(
         <div className="py-10">
@@ -24,7 +24,7 @@ const ProductUI=()=>{
                     </p>
             
             </div>
-            <div className="max-2-screen-xl-mx-auto py-10 grid grid-cols-4 gap-10">
+            <div className="max-w-screen-xl-mx-auto py-10 grid grid-cols-4 gap-10">
                 
            <ProductList/>
           

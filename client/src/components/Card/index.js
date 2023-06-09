@@ -5,14 +5,20 @@ import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 const productCard = (props) => {
   const router = useRouter();
 
+
+  const handleClick = () => {
+    // Code to be executed when the image is clicked
+  router.push(props.item._id)
+  };
+
   return (
  
     <div className="group">
         <div className="w-full h-96 cursor-pointer overflow-hidden">
-      <img className="w-full h-full object-cover group-hover:scale-110 duration-100"
-       src={`http://localhost:4000/productAvatar/${props.item._id}`} width="220" height="120" />
+      <img className="w-full h-full object-cover group-hover:scale-110 duration-100 " onClick={handleClick}
+       src={`http://localhost:4000/productAvatar/${props.item._id}`}/>
 
-       
+    
      </div>
      <div className="w-full border-[1px] px-2 py-4">
      <div className="flex justify-between items-center">
