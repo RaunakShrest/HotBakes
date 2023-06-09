@@ -8,7 +8,7 @@ const productCard = (props) => {
 
   const handleClick = () => {
     // Code to be executed when the image is clicked
-  router.push(props.item._id)
+  router.push('/products/'+props.item._id)
   };
 
   return (
