@@ -5,7 +5,10 @@ import{
     FaYoutube,
     FaHome
 } from "react-icons/fa";
+import { useRouter } from "next/router";
+
 const Footer=()=>{
+    const router= useRouter();
     return(
         <div className="bg-black text-[#949494] py-20 font-titleFont" > 
   <div className="max-w-screen-xl mx-auto grid grid-cols-4">
@@ -15,9 +18,12 @@ const Footer=()=>{
     
     <img className="w-20 h-10" src="https://cdn.esewa.com.np/ui/images/esewa_og.png?111"/>
     <div className="flex gap-5 text-lg text-gray-400">
-        <ImGithub className="hover:text-white duration-300 cursor-pointer"/>
-        <FaFacebookF className="hover:text-white duration-300 cursor-pointer"/>
-        <FaHome className="hover:text-white duration-300 cursor-pointer"/>
+     
+        <a href="https://github.com/">
+        <ImGithub className="hover:text-white duration-300 cursor-pointer" /></a>
+
+        <FaFacebookF className ="hover:text-white duration-300 cursor-pointer"/>
+        <FaHome className="hover:text-white duration-300 cursor-pointer" onClick={()=>router.push('/')}/>
         <FaYoutube className="hover:text-white duration-300 cursor-pointer"/>
     </div>
     </div>

@@ -16,7 +16,7 @@ const productCard = (props) => {
     <div className="group">
         <div className="w-full h-96 cursor-pointer overflow-hidden">
       <img className="w-full h-full object-cover group-hover:scale-110 duration-100 " onClick={handleClick}
-       src={`http://localhost:4000/productAvatar/${props.item._id}`}/>
+       src={`http://localhost:4000/productAvatar/${props.item._id}`} width="220" height="120"/>
 
     
      </div>

@@ -6,6 +6,9 @@ import React from 'react';
  import { useState } from 'react';
  import styles from './register.module.css';
  import { useRouter } from "next/router";
+ import Image from 'next/image';
+ import logo2 from '../../assets/logo2.png'
+ import registerUpload from '@/components/registerUpload';
 
  const SignupSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -97,7 +100,7 @@ const handleFileSave=(e)=>{
         {({ errors, touched }) => (
           <Form className={styles.form}>
             <div className={styles.logo}>
-            <img src="./styles/logo2.png" className={styles.hotbakeslogo}/> 
+            <Image src={logo2} className={styles.hotbakeslogo}/> 
             </div>
             <p className={styles.formtitle}><h1>Signup</h1></p>
 
@@ -119,18 +122,36 @@ const handleFileSave=(e)=>{
             <Field name="role" placeholder="role" className={styles.inputbox}/>
             {errors.role && touched.role ? <div className={styles.errorMessage}>{errors.role}</div> : null}
             <br/>
+
             <input type ="file" onChange={handleFileSave}></input>
                   <br/>
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
             <br/>
             <br/>
-              <p> Already have an account?</p>
-             <button className={styles.createAccountButton} onClick={handleCreateClick}>Login instead  </button>
+              
           </Form>
         )}
       </Formik>
       {contextHolder}
+
+
+      <div className={styles.createAccountContainer}>
+      <div className={styles.dividerContainer}>
+      <div className={styles.line}></div>
+      <p className={styles.registerHint}> Already have an account?</p>
+      <div className={styles.line}></div>
+             </div>
+             <button className={styles.createAccountButton} onClick={handleCreateClick}>Login instead  </button>
+
+             <div className={styles.fadingLine}>
+              </div>
+             </div>
+             
     </div>
+
+    
+
+    
   );
             }
  export default Register

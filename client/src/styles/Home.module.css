@@ -98,4 +98,11 @@ font-family: arial;
   font-family: arial black;
 }
 
+.design{
+display: flex;
 
+}
+
+.hero{
+  background-color: rgba(0,0,0,0.12);
+}

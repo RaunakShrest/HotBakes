@@ -1,3 +1,4 @@
+//Product list sabai dekhauni 
 import React,{ useState, useEffect } from "react";
 import { Skeleton } from 'antd';
 import Card from '../../components/Card'
@@ -22,8 +23,8 @@ const ProductList = () => {
   }, []);
   
   return (
-    <div className="main-card">
-      <h1 style={{textAlign:'center'}}></h1>
+    <div className="max-w-screen-xl-mx-auto py-10 grid grid-cols-4 gap-8">
+  
       {productsList.length> 0 ? productsList.map((item)=>{
             return( <Card item={item}/>)
 

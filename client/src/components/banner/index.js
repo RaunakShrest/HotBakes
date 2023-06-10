@@ -30,7 +30,7 @@ const Banner=()=>{
                      src={data[0]}
                       alt="ImgOne" Loading="priority" 
                       />
-                      <img className="w-screen h-full object-cover"
+                      <img className="w-screen h-full object-fill"
                      src={data[1]}
                       alt="ImgOne" Loading="priority"
                        />
@@ -38,7 +38,7 @@ const Banner=()=>{
                      src={data[2]}
                       alt="ImgOne" Loading="priority" 
                       />
-                           <img className="w-screen h-full object-cover"
+                           <img className="w-screen h-full object-none"
                      src={data[3]}
                       alt="ImgFour" Loading="priority" 
                       />

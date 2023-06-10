@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import {setToken} from '../../redux/reducerSlice/userSlice'
 import { setUserDetails } from '../../redux/reducerSlice/userSlice'
 import { logout } from '../../redux/reducerSlice/userSlice'
- //import styles from '@/styles/Home.module.css'
+ import styles from '@/styles/Home.module.css'
 import image from "next/image"
 import CustomDrawer from '@/components/Nav'
 import { Router, useRouter } from 'next/router'
@@ -23,14 +23,14 @@ const Home = (props)=> {
 
       } */
     return (
-      <div>
+      <div className={styles.hero}>
       <Header/>
         <button type='Logout' onClick={handleLogout}>Logout</button>
       <Banner/>
 
       <ProductUI/>
 
-      <Footer/>
+      <Footer/> 
 
 
       </div>
