@@ -25,7 +25,7 @@ const Home = (props)=> {
     return (
       <div>
       <Header/>
-
+        <button type='Logout' onClick={handleLogout}>Logout</button>
       <Banner/>
 
       <ProductUI/>

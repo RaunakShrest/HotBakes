@@ -8,6 +8,8 @@ import * as Yup from 'yup'
 import { useRouter } from "next/router";
 import { Button, message } from 'antd';
 import { setUserDetails } from '../../redux/reducerSlice/userSlice'
+import Image from 'next/image'
+import logo2 from '../../assets/logo2.png'
 
 const initialValues = {
     phoneNumber: '',
@@ -83,7 +85,7 @@ const Login  = ()=>{
             {({ errors, touched }) => (
               <Form className={styles.form}>
                 <div className={styles.logo}>
-                <img src="" className={styles.hotbakeslogo}/> </div>
+                <Image src={logo2} className={styles.hotbakeslogo}/> </div>
                 <p className={styles.formTitle}>Sign in</p>
              
                 <label htmlFor="phoneNumber" className={styles.formLabel}>Phone Number</label>

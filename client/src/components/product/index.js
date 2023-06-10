@@ -3,7 +3,7 @@ import ProductList from "@/pages/products/productList";
 import React from "react";
 
 
-const ProductUI=({products})=>{
+const ProductUI=()=>{
 
     return(
         <div className="py-10">
