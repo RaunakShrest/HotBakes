@@ -1,4 +1,4 @@
-import { PlusOutlined } from '@ant-design/icons';
+/*import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import { useState } from 'react';
 const getBase64 = (file) =>
@@ -77,4 +77,33 @@ const registerUpload = () => {
     </>
   );
 };
-export default registerUpload;
+export default registerUpload; */
+
+import {Button,Upload} from "antd"
+ //import "antd/dist/antd.css";
+
+
+const UploadButton=()=>{
+
+  return (
+    <div
+    style={{
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      height:"100vh",
+    }} >
+   
+    <Upload.Dragger
+listType="picture"
+      action={'http://locahost:4000/avatar'} >
+        Drag files here OR
+        <br/>
+      <Button>Upload</Button> 
+    </Upload.Dragger>
+    </div>
+ )
+ }
+
+
+ export default UploadButton;

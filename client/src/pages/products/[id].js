@@ -6,18 +6,20 @@ import { useEffect, useState } from 'react';
 import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 
 export default function Page() {
-  //const [indvProduct, setindvProduct] = useState([]);
-
-  
   const router = useRouter();
-  const {id}= router.query
+const[productDetails, setproductDetails]= useState({})
+
   useEffect(()=>{
     getProductList() 
-  }, [id])
+  }, [])
 
   const getProductList= async() =>{
+    debugger;
     const res = await fetch('http://localhost:4000/product/'+router.query.id)
     const data = await res.json();
+    if(data){
+      setproductDetails(data.productDetailList) // productDetails is the details in the database
+    }
     
    // setindvProduct(data.indvProduct)
 
@@ -25,11 +27,13 @@ export default function Page() {
 
   return (
     <div>
+  <p>{productDetails.productName}</p>
 
-      <Header/>
-      {getProductList}
 
-      <div><h1> This is indiv prod</h1></div>
+
+
+
+ 
     {/* <div>
       <div className="max-w-screen-xl mx-auto my-10 flex-gap-10">
       <div className="group">
@@ -70,14 +74,9 @@ export default function Page() {
 
       </div>
     </div> */}
-      <Footer/>
       
-    </div>
-    
-
-
-
-
+      
+    </div> 
 
   )
 }

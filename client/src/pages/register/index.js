@@ -8,7 +8,7 @@ import React from 'react';
  import { useRouter } from "next/router";
  import Image from 'next/image';
  import logo2 from '../../assets/logo2.png'
- import registerUpload from '@/components/registerUpload';
+import UploadButton from '@/components/registerUpload';
 
  const SignupSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -123,15 +123,19 @@ const handleFileSave=(e)=>{
             {errors.role && touched.role ? <div className={styles.errorMessage}>{errors.role}</div> : null}
             <br/>
 
-            <input type ="file" onChange={handleFileSave}></input>
-                  <br/>
+            {/* <input type ="file" onChange={handleFileSave}></input> */}
+            <UploadButton onChange={handleFileSave}/>
+                  
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
+            
+          
             <br/>
             <br/>
               
           </Form>
         )}
       </Formik>
+    
       {contextHolder}
 
 
@@ -142,11 +146,11 @@ const handleFileSave=(e)=>{
       <div className={styles.line}></div>
              </div>
              <button className={styles.createAccountButton} onClick={handleCreateClick}>Login instead  </button>
-
+    
              <div className={styles.fadingLine}>
               </div>
              </div>
-             
+         
     </div>
 
     
