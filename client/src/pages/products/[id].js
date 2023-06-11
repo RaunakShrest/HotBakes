@@ -4,7 +4,9 @@ import Footer from '@/components/footer';
 import Header from '@/components/Header';
 import { useEffect, useState } from 'react';
 import { FaHeart, FaCartArrowDown } from "react-icons/fa";
-
+import productCard from '@/components/Card';
+import styles from '@/styles/Home.module.css'
+import { AiFillStar } from "react-icons/ai";
 export default function Page() {
   const router = useRouter();
 const[productDetails, setproductDetails]= useState({})
@@ -14,7 +16,6 @@ const[productDetails, setproductDetails]= useState({})
   }, [])
 
   const getProductList= async() =>{
-    debugger;
     const res = await fetch('http://localhost:4000/product/'+router.query.id)
     const data = await res.json();
     if(data){
@@ -27,54 +28,50 @@ const[productDetails, setproductDetails]= useState({})
 
   return (
     <div>
-  <p>{productDetails.productName}</p>
+<Header/>
 
-
-
-
-
- 
-    {/* <div>
+<div className="max-w-screen-xl-mx-auto py-10 grid grid-cols-4 gap-8">
       <div className="max-w-screen-xl mx-auto my-10 flex-gap-10">
-      <div className="group">
         <div className="w-full h-96 cursor-pointer overflow-hidden">
       <img className="w-full h-full object-cover group-hover:scale-110 duration-100 " 
-       src={`http://localhost:4000/productAvatar/${indvProduct._id}`}/>
+       src={`http://localhost:4000/productAvatar/${productDetails._id}`}/>
+<div className={styles.salebutton}>
+<div class="absolute h-32 w-32 ...">
+    <p className='bg-black text-white font-semibold font-titleFont px-8 py-1'>
+      Sale
+    </p>
 
-    
-     </div>
-     <div className="w-full border-[1px] px-2 py-4">
-     <div className="flex justify-between items-center">
-     <div>
-        <h2 className="font-titleFont text-base font-bold">{indvProduct.productName}</h2>
-      
+
       </div>
+     </div>
+     </div>
 
-        <div className="flex justify-end relative gap-2 overflow-hidden w-28 text-sm  ">
-      <div className="flex gap-2 transform group-hover:translate-x-24
-      transition-transform duration-500">
+      </div>
+     
+  
       <div>
-      <p className="font-titleFont text-base font-semibold"> Rs: {indvProduct.productPrice} </p>
+        <h1 className={styles.productname}>{productDetails.productName} </h1>
+      </div>
+      <div>
+        <p className= {styles.productprice}>
+          Rs {productDetails.productPrice}
+        </p>
+      </div>
+     <div className={styles.star}>
+      <div className="flex items-center gap-2 text-base">
+        <div className='flex'>
+      <AiFillStar/> 
+      <AiFillStar/>
+       <AiFillStar/> 
+       <AiFillStar/> 
+       <AiFillStar/> 
+       </div>
       </div>
       </div>
-      <p className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex
-      items-center gap-1 top-0 translate-x-32 group-hover:translate-x-0 transition-transform
-      cursor-pointer duration-500">
-         Add to cart <span><FaCartArrowDown/></span></p>
-        </div>
-     </div>
 
-
-
-     </div>
-
-      </div>
-
-
-
-      </div>
-    </div> */}
-      
+    </div>
+ 
+        <Footer/>
       
     </div> 
 

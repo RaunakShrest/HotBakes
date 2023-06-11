@@ -137,7 +137,9 @@ router.get('/products',async (req, res) => {
       }
     })
     router.get("/productAvatar/:id", async (req, res) => {
-      const productData = await Products.findById(req.params.id);
+      try{
+     const productData = await Products.findById(req.params.id);
+     
       const productPhoto = path.join(
         __dirname,
         "../../uploads/productAvatar",
@@ -148,12 +150,15 @@ router.get('/products',async (req, res) => {
         "../../uploads/productAvatar",
         productData.productAvatar
       );
-      console.log(productPhoto)
+     // console.log(productPhoto)
       if (fs.existsSync(productPhoto)) {
         res.sendFile(productPhoto);
       } else {
         res.sendFile(defaultImage);
       }
+    } catch(err){
+      console.log(err)
+    }
     });
     
 
