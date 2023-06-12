@@ -108,11 +108,13 @@ router.get('/products',async (req, res) => {
   })
   
   
-  router.get('/product',async (req, res) => {
-    const productData = await Products.find()
+  router.get('/product',async (req, res) => { //getAllrides vaneko yo ho
+  // const totalCount=await Products.find()
+    const productData = await Products.find().skip((req.query.page-1)*8).limit(8)
     if(productData.length>0){
       res.json({
         productsList:productData,
+        //totalCount:totalCount
       })
     } else{
     res.json("No products found")

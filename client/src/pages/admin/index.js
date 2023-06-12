@@ -82,7 +82,7 @@ const handleLogout=()=>{
     messageApi.error(data.message)
   }
  }catch(err){
-  messageApi.warning("Unable to register products") //data.msg is done to fetch data from server as server knows the real data.
+  messageApi.warning("Unable to register     ") //data.msg is done to fetch data from server as server knows the real data.
   // real data is = whether the data  is (already exist or Register Sucesss!  in this scenario)
  }
 }  
