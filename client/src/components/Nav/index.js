@@ -1,9 +1,13 @@
 import styles from '@/styles/Home.module.css'
 import { Button, Drawer, Radio, Space } from 'antd';
 import { useState } from 'react';
+
+import { useRouter } from "next/router";
 const CustomDrawer = () => {
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState('top');
+
+  const router=useRouter();
   const showDrawer = () => {
     setOpen(true);
   };
@@ -28,7 +32,9 @@ const CustomDrawer = () => {
         open={open}
         
       >
-        <p>Home</p>
+       
+          <p onClick={()=>router.push('/')}>Homesasdsad</p>
+   
         <p>Products</p>
         <p>About us</p>
       </Drawer>

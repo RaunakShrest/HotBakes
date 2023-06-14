@@ -5,10 +5,10 @@ import {HiArrowRight, HiArrowLeft} from "react-icons/hi";
 const Banner=()=>{
     const[currentSlide, setCurrentSlide]= useState(0)
     const data= [
-        "https://images.pexels.com/photos/2144200/pexels-photo-2144200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://c0.wallpaperflare.com/preview/147/758/482/assorted-baked-baked-goods-basket.jpg",
         "https://images.pexels.com/photos/2147834/pexels-photo-2147834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "https://images.pexels.com/photos/205961/pexels-photo-205961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/2067430/pexels-photo-2067430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        "https://c4.wallpaperflare.com/wallpaper/668/530/460/coffee-cup-beverage-espresso-wallpaper-preview.jpg"
     ]
 
     const prevSlide=()=>{
@@ -26,11 +26,11 @@ const Banner=()=>{
             <div className="w-screen-h-[650px] relative">
                 <div style={{transform:`translateX(-${currentSlide *100}vw)`}} 
                 className="w-[400vw] h-[35vw] flex transition-transform duration-1000">
-                    <img className="w-screen h-full object-cover"
+                    <img className="w-screen h-full object-null"
                      src={data[0]}
                       alt="ImgOne" Loading="priority" 
                       />
-                      <img className="w-screen h-full object-fill"
+                      <img className="w-screen h-full object-cover"
                      src={data[1]}
                       alt="ImgOne" Loading="priority"
                        />
@@ -38,7 +38,7 @@ const Banner=()=>{
                      src={data[2]}
                       alt="ImgOne" Loading="priority" 
                       />
-                           <img className="w-screen h-full object-none"
+                           <img className="w-screen h-full object-cover"
                      src={data[3]}
                       alt="ImgFour" Loading="priority" 
                       />
