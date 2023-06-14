@@ -13,7 +13,7 @@ const[productDetails, setproductDetails]= useState({})
 
   useEffect(()=>{
     getProductList() 
-  }, [])
+  }, [router.query.id])
 
   const getProductList= async() =>{
     const res = await fetch('http://localhost:4000/product/'+router.query.id)
@@ -68,7 +68,29 @@ const[productDetails, setproductDetails]= useState({})
        </div>
       </div>
       </div>
+<div className={styles.productDescription}>
+      <p>{productDetails.productDescription} </p>
+  
+      </div>
+   <div className={styles.productControllerbuttons}>
+    <div className='w-52 flex items-center justify-between text-gray-500 gap-4 border p-3'>
+    <p> Quantity</p>
+   <div className="flex items-center gap-4 txt-sm font-semibold">
+   <button className='border h-5 font-normal text-lg flex items-center
+    justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer
+    duration-300 active:bg-black'>-</button>
+    <span>{1}</span>
+    <button className='border h-5 font-normal text-lg flex items-center
+    justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer
+    duration-300 active:bg-black'>+</button>
+   </div>
+    </div>
+    <div className={styles.addtoCartButton}>
+    <button className='bg-black text-white py-3 px-6 active:bg-gray-800'>add to cart </button> 
+    </div>
 
+   </div>
+      
     </div>
  
         <Footer/>

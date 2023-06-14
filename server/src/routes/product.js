@@ -162,6 +162,24 @@ router.get('/products',async (req, res) => {
       console.log(err)
     }
     });
+
+
+    router.delete("/product", async (req, res) => {
+      try{
+     const productDetailsList = await Products.findByIdAndDelete(req.body.id);
+     if(productDetailsList){
+      res.json[{
+        productDetailsList:productDetailsList
+      }]
+    
+     }
+    
+      }
+      catch(e)
+      {
+        console.error(e)
+      }
+    })
     
 
   module.exports=router;

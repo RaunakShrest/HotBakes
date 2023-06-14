@@ -1,15 +1,31 @@
 import { useRouter } from 'next/router';
 import styles from '@/styles/Home.module.css'
-
+import { useDispatch } from 'react-redux';
 import { FaHeart, FaCartArrowDown } from "react-icons/fa";
+import { addToCart } from '@/redux/reducerSlice/counterSlice';
+import axios from 'axios';
 const productCard = (props) => {
   const router = useRouter();
+  const dispatch =useDispatch()
 
 
   const handleClick = () => {
     // Code to be executed when the image is clicked
   router.push('/products/'+props.item._id)
   };
+
+  
+  const deleteProduct=async()=>{
+    const headers={
+      "Content-Type": "application/json",
+    }
+const data={
+  id: props.item._id
+}
+
+  const res= await axios.delete('http://localhost:4000/product/',{headers,data})
+if(res) props.getProductLists()
+  }
 
   return (
  
@@ -34,15 +50,28 @@ const productCard = (props) => {
       <p className="font-titleFont text-base font-semibold"> Rs: {props.item.productPrice} </p>
       </div>
       </div>
-      <p className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex
+      <p onClick={()=>dispatch(addToCart({
+        _id: props.item._id,
+        title: props.item.productName,
+        avatar: props.item.productAvatar,
+        price: props.item.productPrice,
+        quantity:1,
+        description:props.item.productDescription
+
+
+      }))} className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex
       items-center gap-1 top-0 translate-x-32 group-hover:translate-x-0 transition-transform
       cursor-pointer duration-500">
-         Add to cart <span><FaCartArrowDown/></span></p>
+         Add to cart
+          <span><FaCartArrowDown/></span></p>
         </div>
      </div>
 
 
 
+     </div>
+     <div>
+      <button onClick={()=>deleteProduct()}> Delete</button>
      </div>
 
       </div>
