@@ -155,18 +155,15 @@ router.get('/products',async (req, res) => {
     });
 
 
-    /*router.delete("/cart", async (req, res) => {
-
-      const productId=req.body.id
+    router.delete("/product", async (req, res) => {
       try{
      const productDetailsList = await Products.findByIdAndDelete(req.body.id);
-     if(productDetailsList){
-      res.json[{
-        productDetailsList:productDetailsList
-      }]
-    
-     }
-    
+     if(!productDetailsList){
+      return res.send("No products to delete")
+     }else{
+      res.json({
+        productDetailList:productDetailsList
+      })}
       }
       catch(e)
       {
@@ -174,6 +171,6 @@ router.get('/products',async (req, res) => {
       }
     })
     
-*/
+
   module.exports=router;
   

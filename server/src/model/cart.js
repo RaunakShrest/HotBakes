@@ -5,7 +5,7 @@ const cartSchema = new mongoose.Schema({
     productCategory: String,
     productDescription: String,
     productAvatar: {type: String, default: 'defaultAvatar.png'},
-    productId: String
+   // productId: String
   });
   
   const Carts = mongoose.model('Carts', cartSchema);

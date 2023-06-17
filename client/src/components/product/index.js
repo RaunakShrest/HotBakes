@@ -20,8 +20,7 @@ const ProductUI=()=>{
                         available in the shop. Choose what ever you like. Whatever you Choose
                         i'm sure it will change your sad mood into happiness. Hot bakes provides 
                         freshly baked happiness..
-                       
-
+                    
                     </p>
                 
             </div>
