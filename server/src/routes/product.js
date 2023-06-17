@@ -108,18 +108,9 @@ router.get('/products',async (req, res) => {
   })
   
   
-  router.get('/product',async (req, res) => { //getAllrides vaneko yo ho
+  //router.get('/product',async (req, res) => { //getAllrides vaneko yo ho
   // const totalCount=await Products.find()
-    const productData = await Products.find().skip((req.query.page-1)*8).limit(8)
-    if(productData.length>0){
-      res.json({
-        productsList:productData,
-        //totalCount:totalCount
-      })
-    } else{
-    res.json("No products found")
-     
-    }})
+  router.get('/product', Product.getAllProducts)
 
 
     router.get("/product/:id", async (req, res) => {
@@ -164,7 +155,9 @@ router.get('/products',async (req, res) => {
     });
 
 
-    router.delete("/product", async (req, res) => {
+    /*router.delete("/cart", async (req, res) => {
+
+      const productId=req.body.id
       try{
      const productDetailsList = await Products.findByIdAndDelete(req.body.id);
      if(productDetailsList){
@@ -181,6 +174,6 @@ router.get('/products',async (req, res) => {
       }
     })
     
-
+*/
   module.exports=router;
   
