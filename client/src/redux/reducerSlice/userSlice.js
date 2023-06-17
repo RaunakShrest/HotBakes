@@ -1,33 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-
+//redux -> user: u
 const initialState = {
   token: '',
-  role:'',
-  
+  role: '',
+  id: ''
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setToken: (state, action) => {
-       //console.log(action.payload)
-      state.token = action.payload
-    },
-
-    setRole:(state,action)=>{
-      state.role=action.payload
-    },
-    logout:(state,action)=>{ //initial state khali pardini
-      return{
-        ...initialState
+    setUserDetails: (state, action) => {
+      const {token , role ,id } = action.payload
+      return {
+        ...state,
+        token, id, role
       }
-    }
-    // Special reducer for hydrating the state
-  }
+    },
+    logout:  (state, action) => {
+        return {
+          ...initialState
+        }
+     },
+  },
 });
 
-export const { setToken, setRole,logout } = userSlice.actions;
-//export const selectComments = (state) => state.comments.value;
+
+
+
+export const { setUserDetails ,logout} = userSlice.actions;
 export default userSlice.reducer;

@@ -7,6 +7,9 @@ import { useFormik, Formik, Form, Field } from 'formik';
 import * as Yup from 'yup'
 import { useRouter } from "next/router";
 import { Button, message } from 'antd';
+import { setUserDetails } from '../../redux/reducerSlice/userSlice'
+import Image from 'next/image'
+import logo2 from '../../assets/logo2.png'
 
 const initialValues = {
     phoneNumber: '',
@@ -44,8 +47,9 @@ const Login  = ()=>{
         const data = await res.json()
         if (data.success) {
           message.success("login successful");
-          dispatch(setToken(data.token))
-          dispatch(setRole(data.role))
+          dispatch(setUserDetails(data))
+          router.push('/');
+          //router.push('/admin')
         } else {
           message.error("login failed, try again");
         }
@@ -54,6 +58,9 @@ const Login  = ()=>{
         messageApi.warning('Server issues, please try again');
       }
     }
+
+
+  
   
     const handleCreateClick = () => {
       router.push('/register')
@@ -78,7 +85,7 @@ const Login  = ()=>{
             {({ errors, touched }) => (
               <Form className={styles.form}>
                 <div className={styles.logo}>
-                <img src="" className={styles.hotbakeslogo}/> </div>
+                <Image src={logo2} className={styles.hotbakeslogo}/> </div>
                 <p className={styles.formTitle}>Sign in</p>
              
                 <label htmlFor="phoneNumber" className={styles.formLabel}>Phone Number</label>
@@ -112,8 +119,6 @@ const Login  = ()=>{
           </div>
         </div>
          
-        
-  
         </>
         
       )

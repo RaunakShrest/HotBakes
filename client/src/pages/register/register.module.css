@@ -14,32 +14,28 @@
   
   }
   
-
-  
-  
-  
   /* Logo */
   .logo {
-    top: 10%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
+     top: 15%;
+left: 50%;
+position:absolute;
+transform: translate(-50%, -50%);
   
        
   }
   
   .hotbakeslogo{
-    float: left;
-    width: 350px;
-    height: 180px;
+float: right;
+  width: 320px;
+  height: 180px;
     }
   
   
   
   /* Form */
-  .formTitle {
+  .formtitle {
     position: relative;
-    font-size: 26px;
+    font-size: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
    
@@ -62,26 +58,29 @@
   }
   
   .form {
-    margin-left: auto;
-      margin-right: auto;
-      margin-top: 130px;
-      width: 320px;
-      padding: 80px;
-      background-color: rgba(77, 51, 31, 1);
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-      border: rgba(77, 51, 31, 1);
-      border-radius: 49px;
+      margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    width: 510px;
+    padding: 100px;
+    background-color: rgba(77, 51, 31, 1);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border: rgba(77, 51, 31, 1);
+    border-radius: 49px;
   }
   
   .inputbox {
-    width: 300px;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    border: #D9D9D9;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 49px;
+      width: 320px;
+  padding: 8px;
+  margin:10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 15px;
+  border: #D9D9D9;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 49px;
+ 
   }
   
   .passwordHint {
@@ -112,7 +111,6 @@
     line-height: 15spx;
     background-color: whitesmoke;
     margin-left:85px;
-    top:10px;
     border-radius: 49px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
@@ -202,7 +200,8 @@
   
   .createAccountButton {
     width: 100%;
-    line-height: 10px;
+   
+    line-height: 15px;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
@@ -231,5 +230,11 @@
   }
   
 
-
+  .registerHint {
+    font-size: 15px;
+    color:black;
+    
+   
+  
+  }
   

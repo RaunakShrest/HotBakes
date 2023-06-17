@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
-    Product_name: String, 
-    Product_price: String,
-    Product_category: String,
-    Product_description: String
+    productName: String, 
+    productPrice: String,
+    productCategory: String,
+    productDescription: String,
+    productAvatar: {type: String, default: 'defaultAvatar.png'}
   });
   
   const Products = mongoose.model('Products', productSchema);

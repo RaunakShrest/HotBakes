@@ -6,6 +6,10 @@ import React from 'react';
  import { useState } from 'react';
  import styles from './register.module.css';
  import { useRouter } from "next/router";
+ import Image from 'next/image';
+ import logo2 from '../../assets/logo2.png'
+import UploadButton from '@/components/registerUpload';
+
  const SignupSchema = Yup.object().shape({
   fullName: Yup.string()
      .min(2, 'Too Short!')
@@ -28,9 +32,10 @@ import React from 'react';
     .required('Required')
  });
 
-
+//product_Register
  const Register = () => {
 
+  const[file,setFile]= useState(null)
 
   const [messageApi, contextHolder] = message.useMessage();
   const router= useRouter();
@@ -38,11 +43,17 @@ import React from 'react';
 
 
   const registerUser = async(values)=> {
+    var formData = new FormData();
+    const keys= Object.keys(values) // every time append garnu ko satta yo use gareko 
+    keys.forEach((item)=>{ //form ko detalis lai loop lagako
+      formData.append(item,values[item])
+    })
+    formData.append('avatar',file)
     
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values)
+     // headers: { 'Content-Type': 'application/json' },
+      body: formData
   };
 
   try{  
@@ -64,6 +75,11 @@ const handleCreateClick=()=>{
   router.push('/login')
 }
  
+const handleFileSave=(e)=>{
+  setFile(e.target.files[0])
+
+}
+
    return(
     <div>
       
@@ -84,7 +100,7 @@ const handleCreateClick=()=>{
         {({ errors, touched }) => (
           <Form className={styles.form}>
             <div className={styles.logo}>
-            <img src="./styles/logo2.png" className={styles.hotbakeslogo}/> 
+            <Image src={logo2} className={styles.hotbakeslogo}/> 
             </div>
             <p className={styles.formtitle}><h1>Signup</h1></p>
 
@@ -107,16 +123,39 @@ const handleCreateClick=()=>{
             {errors.role && touched.role ? <div className={styles.errorMessage}>{errors.role}</div> : null}
             <br/>
 
+            {/* <input type ="file" onChange={handleFileSave}></input> */}
+            <UploadButton onChange={handleFileSave}/>
+                  
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
+            
+          
             <br/>
             <br/>
-              <p> Already have an account?</p>
-             <button className={styles.createAccountButton} onClick={handleCreateClick}>Login instead  </button>
+              
           </Form>
         )}
       </Formik>
+    
       {contextHolder}
+
+
+      <div className={styles.createAccountContainer}>
+      <div className={styles.dividerContainer}>
+      <div className={styles.line}></div>
+      <p className={styles.registerHint}> Already have an account?</p>
+      <div className={styles.line}></div>
+             </div>
+             <button className={styles.createAccountButton} onClick={handleCreateClick}>Login instead  </button>
+    
+             <div className={styles.fadingLine}>
+              </div>
+             </div>
+         
     </div>
+
+    
+
+    
   );
             }
  export default Register

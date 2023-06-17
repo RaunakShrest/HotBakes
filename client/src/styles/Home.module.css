@@ -1,5 +1,36 @@
+.body {
+  overflow-y: scroll;
+}
+
+
 .main{
   width: 100%;
+  overflow-y: scroll;
+  background-image: url(back.jpg);
+  background-color: antiquewhite;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: -8px;
+  padding-bottom: 50px;
+  box-shadow: -4px 0px 20px rgba(0, 0, 0, 0.1);
+  filter: saturate(55%);
+  position: fixed;
+  margin-top: -2%;
+}
+.logo{
+  width: 100%;
+ 
+  height: 99vh;
+position: absolute;
+background-repeat: no-repeat;
+background-size: cover;
+position: fixed;
+margin: -8px;
+padding-bottom: 7px;
+box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+filter:saturate(55%);
 }
 
 
@@ -21,4 +52,134 @@
   left: 0;
   margin-top: 10px;
   margin-left: 50px;
+}
+
+
+.imagelogo{
+  width: 110px;
+  height: 116px;
+  border-radius: 100px;
+  transform: translate(-52%, -50%);
+  margin-left: 25%;
+  margin-bottom: -18%;
+  margin-top: -13%;
+
+}
+
+.logout{
+  right: 85%;
+  position: absolute;
+  top: 3%;
+}
+  
+
+
+.navbar{
+  float: center;
+	list-style-type: none;
+position: absolute;
+right :37%;
+top:35%
+
+
+}
+
+.navbarList{
+  display: inline-block ;
+font-family: arial;
+
+
+}
+.navbarText{
+  text-decoration: none;
+  color: lightblue;
+  padding: 6px 25px;
+  border: 4px solid brown;
+  font-family: arial black;
+}
+
+.design{
+display: flex;
+
+}
+
+.hero{
+  background-color: rgba(0,0,0,0.12);
+}
+
+.salebutton{
+
+  position: relative;
+  top: 42px;
+  width: 66%;
+  padding: 10px;
+  /* border-radius: 4px; */
+  cursor: pointer;
+  /* transition: background-color 0.2s ease-in-out; */
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  /* border: 1px solid darkgray; */
+  top: -395px;
+  left: 243px;
+}
+.productname{
+  font-weight: 650;
+  font-size: revert;
+  margin: revert;
+  /* margin: 63px; */
+  text-align: center;
+  position: relative;
+  top: 40px;
+left: -100px;
+}
+
+.productprice{
+  left: -335px;
+  font-weight: 500;
+  /* bottom: -20px; */
+  /* margin: revert; */
+  position: relative;
+  top: 130px;
+}
+
+.star{
+ 
+  position: relative;
+  top: 184px;
+  /* left: 23px; */
+  right: 720px;
+}
+
+
+.pagenation{
+  position: relative;
+  left: 207%;
+}
+
+.productDescription{
+
+  position: absolute;
+  /* text-align: center; */
+  left: 29%;
+  top: 49%;
+}
+.productControllerbuttons{
+  position: relative;
+  left: 122%;
+  top: -184%;
+}
+.addtoCartButton{
+  left: 60%;
+  position: relative;
+  /* top: -5%; */
+  bottom: 50%;
+
+}
+
+.logomage{
+  color: transparent;
+  position: relative;
+  width: 225px;
+  height: 134px;
+  left: 5%;
+  top: auto;
 }
