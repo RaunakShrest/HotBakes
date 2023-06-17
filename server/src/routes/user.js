@@ -34,7 +34,6 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/avatar/:id', async (req, res) => {
-  try{
   const userData = await Users.findById(req.params.id)
   const userImage = path.join(__dirname, '../../uploads/avatar', userData.avatarName )
   const defaultImage = path.join(__dirname, '../../uploads/avatar', userData.avatarName )
@@ -42,8 +41,6 @@ router.get('/avatar/:id', async (req, res) => {
     res.sendFile(userImage)
   }else{
     res.sendFile(defaultImage)
-  } } catch(err){
-    console.log(err)
   }
 
 })

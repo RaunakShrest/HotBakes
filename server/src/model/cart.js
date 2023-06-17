@@ -3,7 +3,6 @@ const cartSchema = new mongoose.Schema({
     productName: String, 
     productPrice: String,
     productCategory: String,
-    productDescription: String,
     productAvatar: {type: String, default: 'defaultAvatar.png'},
    // productId: String
   });
