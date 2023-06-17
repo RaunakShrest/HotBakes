@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router';
 import styles from '@/styles/Home.module.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 import { addToCart } from '@/redux/reducerSlice/counterSlice';
+
 import axios from 'axios';
 const productCard = (props) => {
   const router = useRouter();
   const dispatch =useDispatch()
-
+  const { token, role } = useSelector(state => state.user)
 
   const handleClick = () => {
     // Code to be executed when the image is clicked
@@ -63,7 +64,8 @@ if(res) props.getProductLists()
 
      </div>
      <div>
-      <button onClick={deleteProduct}> Delete</button>
+      {role=='admin'?(   <button onClick={deleteProduct}> Delete</button>):null}
+   
      </div>
 
       </div>

@@ -14,6 +14,7 @@ import Banner from '@/components/banner'
 import ProductUI from '@/components/product'
 import Footer from '@/components/footer'
 import { Pagination } from 'antd';
+import AdminHeader from '@/components/AdminHeader'
 
 const Home = (props)=> {
   const router = useRouter();
@@ -27,7 +28,7 @@ const Home = (props)=> {
       } */
     return (
       <div className={styles.hero}>
-      <Header/>
+      <AdminHeader/>
         <button type='Logout' onClick={handleLogout}>Logout</button>
       <Banner/>
 
