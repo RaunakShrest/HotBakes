@@ -24,10 +24,14 @@ const Home = (props)=> {
         router.push('/products')
 
       } */
+
+
     return (
       <div className={styles.hero}>
       <Header/>
-        {/* <button type='Logout' onClick={handleLogout}>Logout</button> */}
+
+
+    
       <Banner/>
 
       <ProductUI/>

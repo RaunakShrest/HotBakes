@@ -1,235 +1,231 @@
 /* Form css for login and register*/
 
 .main {
-    width: 100%;
+  width: 100%;
+
+background-color: white;
+height: 99vh;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: fixed;
+margin: -8px;
+padding-bottom: 7px;
+
+}
+
+
+
+/* Logo */
+.logo {
  
-  background-color: white;
-  height: 99vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
-  margin: -8px;
-  padding-bottom: 7px;
-  
-  }
-  
-  
-  /* Logo */
-  .logo {
-   
-    top: 10%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  background-image: url("../../../images/logo2.PNG");
-  
-       
-  }
-  
-  .hotbakeslogo{
-    float: left;
-    width: 350px;
-    height: 180px;
-    }
-  
-  
-  
-  /* Form */
-  .formTitle {
-    position: relative;
-    font-size: 26px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  top: 15%;
+left: 50%;
+position: absolute;
+transform: translate(-50%, -50%);
 
-   
-    bottom:40px;
-    
-    left: 110px;
-    color: white;
-  }
-  
-  .formLabel {
-    font-weight: 600;
-    font-size: small;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: block;
+     
+}
 
-    margin-bottom: 25px;
-    color: white;
-   
-    
+.hotbakeslogo{
+  float: right;
+  width: 320px;
+  height: 180px;
   }
-  
-  .form {
-    margin-left: auto;
-      margin-right: auto;
-      margin-top: 130px;
-      width: 320px;
-      padding: 80px;
-      background-color: rgba(77, 51, 31, 1);
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-      border: rgba(77, 51, 31, 1);
-      border-radius: 49px;
-  }
-  
-  .inputbox {
-    width: 300px;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    border: #D9D9D9;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 49px;
-
-  }
-  
-  .passwordHint {
-    font-size: 10px;
-    margin-top: -5px;
-    margin-left: 2px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  
-  .input:focus {
-    outline: none;
-    border: 1px solid #4caf50;
-  }
-  
-  .errorMessage {
-    color: red;
-    font-size: 10px;
-    margin-top: -5px;
-    margin-left: 2px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  
-  /* login & Regiter button */
-  .loginRegisterButton {
-    position: relative;
-    width: 45%;
-    padding: 10px;
-    line-height: 15spx;
-    background-color: whitesmoke;
-    margin-left:85px;
-    top:50px;
-    border-radius: 49px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid darkgray;
-  }
-  
-  .loginRegisterButton:hover {
-    background-color:grey;
-  }
-  
-  .signinSignupHint {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 12px;
-    text-align: center;
-  }
-  
-  /* Below form */
-  .createAccountContainer {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 12px;
-    width: 320px;
-    padding: 15px;
-    border-radius: 4px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-  }
-  
-  .createAccountButton {
-    width: 100%;
-    line-height: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid darkgray;
-  }
-  
-  .createAccountButton:hover {
-    background-color: #e2e9e2;
-    text-align: center;
-  }
-  
-  /* fading divider line */
-  .dividerContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0), #ccc),
-      linear-gradient(to right, rgba(255, 255, 255, 0), #ccc);
-  }
-  
-  .registerHint {
-    font-size: 14px;
-    color:black;
-  
-  }
-  
-  .loginRegisterButton:hover {
-    background-color: #4ec746;
-  }
-  
-  .signinSignupHint {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 12px;
-    text-align: center;
-  }
-   
-  /* Below form */
-  .createAccountContainer {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 12px;
-    width: 320px;
-    padding: 15px;
-    border-radius: 4px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-  }
-  
-  .createAccountButton {
-    width: 100%;
-    line-height: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid darkgray;
-  }
-  
-  .createAccountButton:hover {
-    background-color: #e2e9e2;
-    text-align: center;
-  
-  }
-  
-  /* fading divider line */
-  .dividerContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0), #ccc), linear-gradient(to right, rgba(255, 255, 255, 0), #ccc);
-  }
-  
 
 
+
+/* Form */
+.formTitle {
+  position: relative;
+  font-size: 26px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+ 
+  bottom:40px;
   
+  left: 110px;
+  color: white;
+}
+
+.formLabel {
+  font-weight: 600;
+  font-size: small;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: block;
+
+  margin-bottom: 25px;
+  color: white;
+ 
+  
+}
+
+.form {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 156px;
+  width: 452px;
+  padding: 58px;
+  background-color: rgba(77, 51, 31, 1);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border: rgba(77, 51, 31, 1);
+  border-radius: 49px;
+}
+
+
+.inputbox {
+  width: 328px;
+  height: 43px;
+  padding: 14px;
+  margin-bottom: 26px;
+  /* margin: 16px; */
+  font-size: 14px;
+  border: #D9D9D9;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 42px;
+  position: relative;
+  top: -60px;
+
+}
+
+.passwordHint {
+  font-size: 10px;
+  margin-top: -5px;
+  margin-left: 2px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #4caf50;
+}
+
+.errorMessage {
+  color: red;
+  font-size: -6px;
+  margin-top: -44px;
+  margin-left: 2px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* login & Regiter button */
+.loginRegisterButton {
+  position: relative;
+  width: 45%;
+  padding: 10px;
+  line-height: 15spx;
+  background-color: whitesmoke;
+  margin-left:85px;
+  top:50px;
+  border-radius: 49px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid darkgray;
+}
+
+.loginRegisterButton:hover {
+  background-color:grey;
+}
+
+.signinSignupHint {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Below form */
+.createAccountContainer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+  width: 320px;
+  padding: 15px;
+  border-radius: 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+.createAccountButton {
+  width: 100%;
+  line-height: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid darkgray;
+}
+
+.createAccountButton:hover {
+  background-color: #e2e9e2;
+  text-align: center;
+}
+
+/* fading divider line */
+.dividerContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #ccc),
+    linear-gradient(to right, rgba(255, 255, 255, 0), #ccc);
+}
+
+.registerHint {
+  font-size: 14px;
+  color:black;
+
+}
+
+.loginRegisterButton:hover {
+  background-color: #4ec746;
+}
+
+.signinSignupHint {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  text-align: center;
+}
+ 
+/* Below form */
+.createAccountContainer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+  width: 320px;
+  padding: 15px;
+  border-radius: 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+.createAccountButton {
+  width: 100%;
+  line-height: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid darkgray;
+}
+
+.createAccountButton:hover {
+  background-color: #e2e9e2;
+  text-align: center;
+
+}
+
+.formtitle{
+  color: black;
+  top: -174px;
+  color: saddlebrown;
+  text-align: center;
+  font-size: 29px;
+  position: relative;
+}

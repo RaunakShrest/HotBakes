@@ -2,14 +2,21 @@ import { useRouter } from 'next/router';
 import Banner from '@/components/banner';
 import Footer from '@/components/footer';
 import Header from '@/components/Header';
-import { useEffect, useState } from 'react';
+import { useEffect, useState  } from 'react';
 import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 import productCard from '@/components/Card';
 import styles from '@/styles/Home.module.css'
 import { AiFillStar } from "react-icons/ai";
+import { useSelector } from 'react-redux';
+
+
+
 export default function Page() {
   const router = useRouter();
 const[productDetails, setproductDetails]= useState({})
+const { phoneNumber, token, fullname, id } = useSelector(state => state.user);
+const { productId, productName } = router.query
+
 
   useEffect(()=>{
     getProductList() 
@@ -25,6 +32,47 @@ const[productDetails, setproductDetails]= useState({})
    // setindvProduct(data.indvProduct)
 
   }
+  const handleAddCart = async () => {
+    if (token) {
+        try {
+            const body = {
+                productId: router.query.id,
+                phoneNumber: router.query.phoneNumber,
+                productName:router.query.productName,
+                userId:id
+          
+            };
+            const response = await fetch('http://localhost:4000/cart',
+             {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            });
+
+            if (response.ok) {
+                console.log('product added to cart');
+                alert("product added to cart");
+            } else if (response.status === 409) {
+                const data = await response.json();
+                alert(data.error);
+            } else if (response.status === 400) {
+                alert("Item already exists in the cart")
+            } else {
+                console.error('Product add to cart failed');
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    } else {
+        alert("Please login first, to add to cart")
+        router.push('/login')
+    }
+}
+
+
+
 
   return (
     <div>
@@ -86,7 +134,7 @@ const[productDetails, setproductDetails]= useState({})
    </div>
     </div>
     <div className={styles.addtoCartButton}>
-    <button className='bg-black text-white py-3 px-6 active:bg-gray-800'>add to cart </button> 
+    <button  onClick={handleAddCart}className='bg-black text-white py-3 px-6 active:bg-gray-800'>add to cart </button> 
     </div>
 
    </div>

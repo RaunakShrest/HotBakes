@@ -13,7 +13,7 @@ const registerProduct= async (req, res) => {
       }
 
 
-      const getAllProducts= async (req,res) =>{
+      const getAllProducts= async (req,res) =>{ //pagination
         const productData = await Products.find().skip((req.query.page-1)*8).limit(8)
         if(productData.length>0){
           res.json({
@@ -24,10 +24,46 @@ const registerProduct= async (req, res) => {
         res.json("No products found")
          
         }}
+
+
+        
+      const getSearchProducts= async (req,res) =>{ //search
+      console.log(req.query)
+        const data = await Products.find({productName:{$regex:req.query.searchKey}})
+        if(data){
+          res.json({
+            productsList:data,
+            //totalCount:totalCount
+          })
+        } else{
+        res.json("No products found")
+         
+        }}
+      
+      
+
+        const getProductById =async(req,res)=>{
+          try{
+            const productDetailsList = await Products.findById(req.params.id);
+            if(!productDetailsList){
+             return res.send("No product details to show")
+            }
+             res.json({
+               productDetailList:productDetailsList
+             })
+            
+             }
+             catch(e)
+             {
+               console.error(e)
+             }
+           }
       
 
   module.exports = {
       registerProduct,
-      getAllProducts
+      getAllProducts,
+      getProductById,
+     getSearchProducts
       
     }

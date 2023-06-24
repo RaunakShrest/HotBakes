@@ -1,44 +1,88 @@
 const express=require('express')
 const router=express.Router()
 const jwt = require('jsonwebtoken')
-const upload = require('../middleware/uploadProduct')
 const path = require('path')
-const Products = require('../model/product');
-const { model } = require('mongoose');
+//const { model } = require('mongoose');
 const Carts = require('../model/cart')
+const Users = require('../model/users')
 
 router.post('/cart', async (req, res) => { //add to cart
     //user found in db?
-    try{
-    const existingcartItem = await Carts.findOne({ productName:productName})
-    if (existingcartItem) {
-        return res.status(400).json({ message: 'Item already exists in the cart' });
-    }
-    
+    try{ 
+    const { productId, userId, productName } = req.body;
+  const userDetails= await Users.findOne({_id:userId});
+  const productDetails= await Users.findOne({productName:productName});
+      
+  const currentUserCarts = userDetails.userCarts
+if(!productId) {
+  currentUserCarts.push({productId,productQuantity:1})
+} else {
+  const existingCartItem = currentUserCarts.find((item) => item.productId === productId);
+  if (existingCartItem) {
+    existingCartItem.productQuantity++;
 
-    const newCart= await Carts.create({productName:productName})
-    res.status(201).json(newCart)
+    res.json({ message: "Added to cart", success: true })
+  } else {
+    currentUserCarts.push({ productId, productQuantity: 1 });
+    res.json({ message: "Added to cart", success: true })
+}
 
-    } catch(error) {
+  userDetails.userCarts= currentUserCarts
+userDetails.save()
+console.log(userDetails)
+
+productDetails.userCarts= currentUserCarts
+productDetails.save()
+console.log(productDetails)
+   
+   } } catch(error) {
         console.log(error)
-        res.status(500).json({error:"Internal server error"})
-    } 
+        //res.status(500).json({error:"Internal server error"})
+    }  
 })
 
 
-router.get('/cart', async (req, res) => { //add to cart
-    //user found in db?
-    try{
-        const productName= req.query.productName
-        const cartItems= await Carts.find({productName:productName})
-        res.json(cartItems)
+// router.get('/cart', async (req, res) => { //add to cart get
+//     //user found in db?
+//     // try{
+//     //    const phoneNumber= req.query.phoneNumber
+//     //     const cartItems= await Carts.find({phoneNumber:phoneNumber, productId})
+//     //     res.json(cartItems)
    
 
-    } catch(error) {
-        console.error("Error fetching cart items",error)
-        res.status(500).json({error:"Internal server error"})
-    } 
+//     // } catch(error) {
+//     //     console.error("Error fetching cart items",error)
+//     //     res.status(500).json({error:"ternal server error"})
+//     // } \
+//     const cartList= await Users.findById(req.query.id).populate('productId');
+//     if(cartList){
+//       res.json({
+//         cartList:cartList
+//       })
+//     }
+
+   
+  
+//   console.log(cartList)
+// })
+
+
+router.get('/cart', async (req, res) => { //add to cart get
+
+  try{
+    const cartItems = await Carts.find({}).populate('userCarts') ;
+    res.send({status:"ok", data:cartItems}) //sending data to the frontend
+
+
+
+  }catch(error){
+    console.log(error)
+  }
+
+
+  
 })
+
 
 
 /*router.delete("/cart", async (req, res) => {
@@ -58,4 +102,4 @@ router.get('/cart', async (req, res) => { //add to cart
     }
   })
 */
-    model.exports.router
+module.exports = router;

@@ -29,7 +29,7 @@ const Home = (props)=> {
     return (
       <div className={styles.hero}>
       <AdminHeader/>
-        <button type='Logout' onClick={handleLogout}>Logout</button>
+        {/* <button type='Logout' onClick={handleLogout}>Logout</button> */}
       <Banner/>
 
       <ProductUI/>
