@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     avatarName: {type: String, default: 'defaultAvatar.png'},
 
     //userCarts:[{productId:String}]
-    userCarts: [{productId: {type:String}, productQuantity: {type:String}, productName: {type:String}}]
+    userCarts: [{productId: {type: mongoose.Schema.Types.ObjectId, ref: 'product'}, productQuantity: {type:String}, productName: {type:String}}]
       
     
   });

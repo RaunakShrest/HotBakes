@@ -112,7 +112,7 @@ router.get('/products',async (req, res) => {
   // const totalCount=await Products.find()
   router.get('/product', Product.getAllProducts)
 
-  router.get('/product', Product.getSearchProducts)
+  router.get('/product/search', Product.getSearchProducts)
 
 
   router.get('/product/:id',Product.getProductById)

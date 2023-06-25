@@ -28,8 +28,9 @@ const registerProduct= async (req, res) => {
 
         
       const getSearchProducts= async (req,res) =>{ //search
-      console.log(req.query)
-        const data = await Products.find({productName:{$regex:req.query.searchKey}})
+  
+      const regex = new RegExp("^"+req.query.searchKey)
+        const data = await Products.find({productName:regex})
         if(data){
           res.json({
             productsList:data,

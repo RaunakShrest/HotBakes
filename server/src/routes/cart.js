@@ -67,21 +67,39 @@ console.log(productDetails)
 // })
 
 
+    // const options = {
+    //   path: 'userCarts.productId',
+    //   model: 'Users'
+    // };
+
+//     const popObj = {
+//       path: 'Users',
+//       options: { sort: { position: -1 } },
+//       populate: {
+//         path: 'userCarts',
+//         select: 'name',
+//         populate: {
+//           path: 'permissions'
+//         }
+//       }
+// };
 router.get('/cart', async (req, res) => { //add to cart get
 
   try{
-    const cartItems = await Carts.find({}).populate('userCarts') ;
-    res.send({status:"ok", data:cartItems}) //sending data to the frontend
 
+    const cartItems = await Carts.find({}) 
+ 
+    res.send({status:"ok", data:cartItems}) //sending data to the frontend
 
 
   }catch(error){
     console.log(error)
   }
+})
 
 
   
-})
+// })
 
 
 
