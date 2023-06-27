@@ -87,10 +87,18 @@ router.get('/cart', async (req, res) => { //add to cart get
 
   try{
 
-    const cartItems = await Carts.find({}) 
- 
-    res.send({status:"ok", data:cartItems}) //sending data to the frontend
+const cartItems = await Users.find({}).populate({
+ path: 'userCarts',
+ populate: {
+ path: 'productId',
+ model: 'Products'
+ }
+ })
+if(cartItems){   res.json({
+cartItems:cartItems
+})
 
+}
 
   }catch(error){
     console.log(error)
