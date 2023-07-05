@@ -29,11 +29,11 @@ if(!productId) {
 
   userDetails.userCarts= currentUserCarts
 userDetails.save()
-console.log(userDetails)
+// console.log(userDetails)
 
 productDetails.userCarts= currentUserCarts
 productDetails.save()
-console.log(productDetails)
+// console.log(productDetails)
    
    } } catch(error) {
         console.log(error)
@@ -84,17 +84,18 @@ console.log(productDetails)
 //       }
 // };
 router.get('/cart', async (req, res) => { //add to cart get
-
+  
   try{
-
-const cartItems = await Users.find({}).populate({
+console.log(req.query)
+const cartItems = await Users.findById(req.query.userId).populate({
  path: 'userCarts',
  populate: {
  path: 'productId',
  model: 'Products'
  }
  })
-if(cartItems){   res.json({
+if(cartItems){   
+  res.json({
 cartItems:cartItems
 })
 

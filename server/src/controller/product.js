@@ -37,7 +37,7 @@ const registerProduct= async (req, res) => {
             //totalCount:totalCount
           })
         } else{
-        res.json("No products found")
+        res.json("No products found") 
          
         }}
       
