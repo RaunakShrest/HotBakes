@@ -1,25 +1,24 @@
 
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
-//import Footer from "@/components/Footer";
-import { useSelector } from 'react-redux';
+// import Footer from "@/components/Footer";
+import { useSelector, useDispatch } from 'react-redux';
+import Image from "next/image";
+import axios from "axios";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { token, role, id } = useSelector(state => state.user);
    const [productItems, setProductItems] = useState([]);
+   const [productTotal, seproductTotal] = useState(0)
    
    const fetchCartItems = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/cart?userId=${id}`); //fetching onbasis of userId and role
+  const response = await fetch(`http://localhost:4000/cart?userId=${id}`,); //fetching onbasis of userId and role
+      
       const data = await response.json();
 
-      // if (Array.isArray(data)) {
-      //   setCartItems(data);
-      // } else {
-      //   console.error('Received cart items data is not an array:', data);
-      // }
       if ((data)) {
         console.log(data)
    
@@ -39,6 +38,152 @@ const Cart = () => {
     fetchCartItems();
   }, []);
 
+
+
+  // const deleteCart = async (itemId) => {
+  //   try {
+  //     const response = await axios.delete(`http://localhost:4000/cart/${itemId}`);
+  //     if (response.status === 200) {
+  //       dispatch(removeCartItem(itemId)); // Assuming you have an action to remove the item from the Redux store
+  //     }
+  //   } catch (error) {
+  //     console.error('Error deleting cart item:', error);
+  //   }
+  // };
+  // const headers={
+  //   "Content-Type": "application/json",
+  // }
+  // const data={
+  //   id: item.productId
+  // }
+
+  // const deleteCart = async (itemId) => {
+  //   try {
+  //     const response = await axios.delete(`http://localhost:4000/cart`,{headers,data}
+        
+  //     )
+  //     if (response.status === 200) {
+  //       // Remove the item from the cartItems state
+  //       setCartItems(prevCartItems => prevCartItems.filter(item => item._id !== itemId));
+  //     }
+  //   } catch (error) {
+  //     console.error('Error deleting cart item:', error);
+  //   }
+  // };
+  const deleteCart = async (item) => {
+    try {
+      const response = await axios.delete(`http://localhost:4000/cart?userId=${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          id: item.productId,
+        },
+      });
+  
+      if (response.status === 200) {
+        setCartItems(prevCartItems =>
+          prevCartItems.filter(cartItems => cartItems._id !== item._id)
+        );
+      }
+    } catch (error) {
+      console.error('Error deleting cart item:', error);
+    }
+  };
+  // async function deleteCartItem(cartItemId) {
+  //   try {
+  //     const response = await fetch(`http://localhost:4000/cart?userId=${id}`, {
+  //       method: 'DELETE',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ _id: cartItemId })
+  //     });
+  
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       console.log(data.cartItems); // Handle the deleted cart item data
+  //     } else {
+  //       const errorData = await response.json();
+  //       console.error(errorData.error); // Handle the error message
+  //     }
+  //   } catch (error) {
+  //     console.error('An error occurred:', error);
+  //   }
+  // }
+//   const handleRemoveCartItem = async (itemId) => {
+//     try {
+//         // Send a request to remove the item from the cart
+//         await fetch(`http://localhost:4000/cart?userId=${id}`, { // cart ma hit garni haina cart ko userId ma hit garni ho to display particular users cartlIst
+//             method: 'DELETE',
+//         });
+
+//         // Update the cartItems state by removing the item with matching productId
+//         setCartItems(prevItems => prevItems.length>0&& prevItems.filter(item => item.productId !== itemId));
+//     } catch (error) {
+//         console.error('Error removing cart item:', error);
+//     }
+// };
+
+
+
+  return (
+    <div>
+   
+   <div>
+        <h1>Your cartItems are here</h1>
+    
+         {/* {cartItems.map((cartItem) => (
+          <div key={cartItem._id}>
+            <h3>{cartItem.fullName}</h3>
+            <p>Phone Number: {cartItem.phoneNumber}</p>
+            <ul>
+             
+            </ul>
+          </div>
+        ))}  */}
+
+  {cartItems?.userCarts?.length>0 && cartItems?.userCarts?.map((item) => (
+                 <li key={item._id}>
+                 <h4>{item.productId.productName}</h4>
+                  <p>Quantity: {item.productQuantity}</p>
+                  <p>Price: {item.productId.productPrice}</p>
+
+              <p> Total: {item.productQuantity}X{item.productId.productPrice}={item.productQuantity * item.productId.productPrice}</p>
+                   
+                 
+
+
+                   <div>
+                   <button onClick={() => deleteCart(item.productId)}>Delete</button>
+                   </div>
+                   <div>
+
+
+      {/* <Image
+       loader={()=>item.productId.productAvatar}
+        src={`http://localhost:4000/productAvatar/${item.productId.productAvatar}`}
+        alt={item.productId.productAvatar}
+        height={100}
+        width={100}
+      /> */}
+
+<img src={`http://localhost:4000/productAvatar/${item.productId}`}/>
+    </div>
+ 
+                 </li>
+              ))}
+              
+
+      
+      </div>
+      
+    </div>
+    
+  );
+};
+
+export default Cart;
   // useEffect(() => {
   //           const fetchProducts = async () => {
   //               try {
@@ -59,36 +204,3 @@ const Cart = () => {
   //               clearInterval(interval);
   //           };
   //       }, []);
-
-  return (
-    <div>
-   
-   <div>
-        <h1>Cart Items</h1>
-    
-         {/* {cartItems.map((cartItem) => (
-          <div key={cartItem._id}>
-            <h3>{cartItem.fullName}</h3>
-            <p>Phone Number: {cartItem.phoneNumber}</p>
-            <ul>
-             
-            </ul>
-          </div>
-        ))}  */}
-
-  {cartItems?.userCarts?.length>0 && cartItems?.userCarts?.map((item) => (
-                 <li key={item._id}>
-                 <h4>{item.productId.productName}</h4>
-                  <p>Quantity: {item.productQuantity}</p>
-                  <p>Price: {item.productId.productPrice}</p>
-                   <p>Category: {item.productId.productCategory}</p>
-                  <p>Description: {item.productId.productDescription}</p>
-                 </li>
-              ))}
-      </div>
-      
-    </div>
-  );
-};
-
-export default Cart;

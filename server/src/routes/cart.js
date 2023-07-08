@@ -84,9 +84,9 @@ productDetails.save()
 //       }
 // };
 router.get('/cart', async (req, res) => { //add to cart get
-  
+  console.log("hitted in server")
   try{
-console.log(req.query)
+
 const cartItems = await Users.findById(req.query.userId).populate({
  path: 'userCarts',
  populate: {
@@ -107,26 +107,50 @@ cartItems:cartItems
 })
 
 
-  
+
+// router.delete("/cart/:itemId", async (req, res) => {
+//   try{
+//     const itemId=   req.params.itemId;
+//  const cartItems = await Users.deleteOne(req.query.userId);
+//  console.log(cartItems)
+//  if(!cartItems){
+//   return res.send("No products to delete")
+//  }else{
+//   res.json({
+//     cartItems:cartItems
+//   })}
+//   }
+//   catch(e)
+//   {
+//     console.error(e)
+//   }
 // })
+router.delete('/cart', async (req, res) => {
+  console.log("he")
+  try {
+   console.log(req.body.id)
+    const cartItems = await Users.findByIdAndDelete(req.body );
 
+//     if (cartItems.deletedCount === 0) {
+//       return res.status(404).json({ error: 'Cart item not found' });
+//     }
+//     res.json({ success: true });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Server error' });
+//   }
+// });
+if(!cartItems){
+  return res.send("No cartsItems to delete")
+ }else{
+  res.json({
+    cartItems:cartItems
+  })}
+  }
+  catch(e)
+  {
+    console.error(e)
+  }
+})
 
-
-/*router.delete("/cart", async (req, res) => {
-    try{
-   const productDetailsList = await Carts.findByIdAndDelete(req.body.id);
-   if(productDetailsList){
-    res.json[{
-      productDetailsList:productDetailsList
-    }]
-  
-   }
-  
-    }
-    catch(e)
-    {
-      console.error(e)
-    }
-  })
-*/
 module.exports = router;

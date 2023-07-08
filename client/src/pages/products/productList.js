@@ -10,12 +10,15 @@ const ProductList = () => {
   const [totalPage, setTotalPage] = useState(0)
 
   const getProductLists = async (page=1) => {
-    
+    try{
     const res = await fetch("http://localhost:4000/product?page=" + page)
     const data = await res.json();
     if (data){
       setproductsList(data.productsList);
       setTotalPage(data.totalCount)
+    } }
+    catch(err){
+      console.error(err)
     }
  
   };

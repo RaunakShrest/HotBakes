@@ -23,12 +23,15 @@ const { productId, productName } = router.query
   }, [router.query.id])
 
   const getProductList= async() =>{
+    try{
     const res = await fetch('http://localhost:4000/product/'+router.query.id)
     const data = await res.json();
     if(data){
       setproductDetails(data.productDetailList) // productDetails is the details in the database
     }
-    
+  }catch(error){
+    console.error(error)
+  }
    // setindvProduct(data.indvProduct)
 
   }
