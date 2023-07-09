@@ -1,10 +1,11 @@
 
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
-// import Footer from "@/components/Footer";
+ import Footer from "@/components/Footer";
 import { useSelector, useDispatch } from 'react-redux';
 import Image from "next/image";
 import axios from "axios";
+import styles from '@/styles/Home.module.css'
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -125,11 +126,19 @@ const Cart = () => {
 //     }
 // };
 
-
+const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
+  const itemPrice = item.productQuantity * item.productId.productPrice;
+  return total + itemPrice;
+}, 0);
 
   return (
     <div>
-   
+   <Header/>
+    <br/>
+    <br/>
+    <br/>
+
+
    <div>
         <h1>Your cartItems are here</h1>
     
@@ -151,11 +160,10 @@ const Cart = () => {
 
               <p> Total: {item.productQuantity}X{item.productId.productPrice}={item.productQuantity * item.productId.productPrice}</p>
                    
-                 
-
+                
 
                    <div>
-                   <button onClick={() => deleteCart(item.productId)}>Delete</button>
+                   <button onClick={() => deleteCart(item.productId)}>Delete</button> 
                    </div>
                    <div>
 
@@ -173,13 +181,48 @@ const Cart = () => {
  
                  </li>
               ))}
+
+<div className={styles.checkoutDetails}>
+    {cartItems.userCarts?.length > 0 && (
+      <div>
+        {cartItems.userCarts.map((item) => (
+          <ul key={item._id}>
+            {/* Render item details */}
+          </ul>
+        ))}
+        <div>
+          <div className={styles.cartTotalsText}>
+        <h2 className="text-2x1 font-medium center">Cart-Totals</h2>
+        </div>
+        <div className={styles.overallTotalText}>
+        <h4 className="font-titleFont font-bold text-lg">Overall Total:</h4> {/* Display the overall total */}
+        </div>
+        <div className={styles.totalPrice}>
+        <h4 className="font-titleFont font-bold text-lg"> Rs:{totalPrice}</h4>
+        </div>
+
+        <p className="flex items-start gap-4 text-base">
+          Note:{" "}
+          <span className="text-2x1 font-medium">
+            The products you ordered are non-refundable 
+          </span>
+        </p>
+        <div className={styles.proceedButton}>
+        <button className="text-base bg-black text-white w-80 py-3 mt-6 hover:bg-gray-800 duration">Proceed to Checkout</button>
+        </div>
+
+        </div>
+      </div>
+      
+    )}
+  </div>
               
 
       
       </div>
-      
+      <Footer/>
     </div>
-    
+   
   );
 };
 

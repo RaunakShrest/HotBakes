@@ -183,3 +183,34 @@ left: -100px;
   left: 5%;
   top: auto;
 }
+
+.checkoutDetails{
+  position: relative;
+    left: 54%;
+    /* top: 68%; */
+    bottom: 1075px;
+
+}
+.cartTotalsText{
+  font-size: 26px;
+  position: relative;
+    left: 94px;
+}
+
+.overallTotalText{
+  position: relative;
+  left: 100px;
+  margin-top: 11px;
+  text-decoration: underline;
+}
+.totalPrice{
+  position: relative;
+    left: 4px;
+    margin-top: 20px;
+    margin-bottom: 14px;
+    color: limegreen;
+
+}
+.proceedButton{
+
+}
