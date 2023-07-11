@@ -112,23 +112,15 @@ router.get('/products',async (req, res) => {
   // const totalCount=await Products.find()
   router.get('/product', Product.getAllProducts)
 
+  router.get('/product/search', Product.getSearchProducts)
 
-    router.get("/product/:id", async (req, res) => {
-      try{
-     const productDetailsList = await Products.findById(req.params.id);
-     if(!productDetailsList){
-      return res.send("No product details to show")
-     }
-      res.json({
-        productDetailList:productDetailsList
-      })
-     
-      }
-      catch(e)
-      {
-        console.error(e)
-      }
-    })
+
+  router.get('/product/:id',Product.getProductById)
+
+  
+  //router.get('/productAvatar/:id',Product.getProductAvatarById)
+   
+      
     router.get("/productAvatar/:id", async (req, res) => {
       try{
      const productData = await Products.findById(req.params.id);

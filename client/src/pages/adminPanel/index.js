@@ -11,6 +11,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {setToken} from '../../redux/reducerSlice/userSlice'
 import styles from './productform.module.css';
+import Image from 'next/image'
+import logo2 from '../../assets/logo2.png'
 
 
  const ProductSchema = Yup.object().shape({
@@ -100,7 +102,7 @@ const handleFileSaveProduct=(e)=>{
         {({ errors, touched }) => (
           <Form className={styles.form}>
             <div className={styles.logo}>
-            <img src="./styles/logo2.png" className={styles.hotbakeslogo}/> 
+
             </div>
             <p className={styles.formtitle}><h1>Product Panel</h1></p>
 

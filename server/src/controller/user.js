@@ -21,7 +21,7 @@ const registerUser= async (req, res) => {
         //req.body also need avatarName
         //so we assign new key avatarName to req.body
         req.body.password = hash
-     
+        req.body.itemCarts= [];
         req.body.avatarName= req?.file?.filename 
         const data = await Users.create(req.body)
         if (data) {

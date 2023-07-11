@@ -35,6 +35,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/avatar/:id', async (req, res) => {
   const userData = await Users.findById(req.params.id)
+
   const userImage = path.join(__dirname, '../../uploads/avatar', userData.avatarName )
   const defaultImage = path.join(__dirname, '../../uploads/avatar', userData.avatarName )
   if(fs.existsSync(userImage)){
@@ -44,6 +45,8 @@ router.get('/avatar/:id', async (req, res) => {
   }
 
 })
+
+
 
 
 /*router.get('/product',async (req, res) => {
