@@ -176,6 +176,7 @@ left: -100px;
 }
 
 .logomage{
+  mix-blend-mode: multiply;
   color: transparent;
   position: relative;
   width: 225px;
