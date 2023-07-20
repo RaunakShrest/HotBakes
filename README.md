@@ -1,24 +1,24 @@
 # HotBakes
 
 Technology Stacks
-- [x]Next JS
-- [x]React Hooks 
-- [x]React Props
-- [x]React icons
-- [x]NextJS router
-- [x]Formik and Yup validation
-- [x]React Redux
-- [x]Persist
-- [x]UI libraries- Ant Design
-- [x]Tailwind css
-- [x]Mongo DB
-- [x]Express
-- [x]Node JS
-- [x]Rest Api
-- [x]Middlewares
-- [x]Multer for file upload features
-- [x]Pagination
-- [x]Cors
+- Next JS
+- React Hooks 
+- React Props
+- React icons
+- NextJS router
+- Formik and Yup validation
+- React Redux
+- Persist
+- UI libraries- Ant Design
+- Tailwind css
+- Mongo DB
+- Express
+- Node JS
+- Rest Api
+- Middlewares
+- Multer for file upload features
+- Pagination
+- Cors
 
 
 
@@ -38,6 +38,11 @@ Auth
     - [x] password hash from bcrypt
     - [x] Admin login check
     - [x] User login check
+
+
+    - [ ] Logout
+           - [x] Ending session on logout
+
 - [ ] Register
     - [x] password hash from bcrypt
     - [x] added web tokens
@@ -47,10 +52,11 @@ Auth
     - [x] password hash from bcrypt
     - [x] added web tokens
     - [x] accessed from login dashboard
+    - [x] Add products
 
- - [x] Admin Dashboard
-        -[x]  Only accessed after being logged in as admin
-        -[x]  Delete the products function
+ - [ ] Admin Dashboard
+        -[x] Only accessed after being logged in as admin
+        -[x] Delete the products function
 
 - [x] Added Tokens
 
@@ -60,5 +66,7 @@ Auth
     -[x] Add to cart
     -[x] View cart items
     -[x] View overall totals
-    
+    -[x] Pagination
+    -[x] Search features
+
 
