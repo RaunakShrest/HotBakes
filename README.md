@@ -31,7 +31,7 @@ For form validation notes:
 6) Crypto is an inbuilt feature of nodeJS so you don't need to install any packages for it.
 
 Features
-Auth
+Authorization
 - [ ] Login 
     - [x] frontend form validation
     - [x] backend validation
@@ -55,18 +55,18 @@ Auth
     - [x] Add products
 
  - [ ] Admin Dashboard
-        -[x] Only accessed after being logged in as admin
-        -[x] Delete the products function
+     - [x] Only accessed after being logged in as admin
+     - [x] Delete the products function
 
 - [x] Added Tokens
 
 - [ ] User Homepage
-    -[x] View Products
-    -[x] View product details
-    -[x] Add to cart
-    -[x] View cart items
-    -[x] View overall totals
-    -[x] Pagination
-    -[x] Search features
+    - [x] View Products
+    - [x] View product details
+    - [x] Add to cart
+    - [x] View cart items
+    - [x] View overall totals
+    - [x] Pagination
+    - [x] Search features
 
 
