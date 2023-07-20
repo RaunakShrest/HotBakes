@@ -71,26 +71,26 @@ const Cart = () => {
   //     console.error('Error deleting cart item:', error);
   //   }
   // };
-  const deleteCart = async (item) => {
-    try {
-      const response = await axios.delete(`http://localhost:4000/cart?userId=${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          id: item.productId,
-        },
-      });
+  // const deleteCart = async (item) => {
+  //   try {
+  //     const response = await axios.delete(`http://localhost:4000/cart?userId=${id}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       data: {
+  //         id: item.productId,
+  //       },
+  //     });
   
-      if (response.status === 200) {
-        setCartItems(prevCartItems =>
-          prevCartItems.filter(cartItems => cartItems._id !== item._id)
-        );
-      }
-    } catch (error) {
-      console.error('Error deleting cart item:', error);
-    }
-  };
+  //     if (response.status === 200) {
+  //       setCartItems(prevCartItems =>
+  //         prevCartItems.filter(cartItems => cartItems._id !== item._id)
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.error('Error deleting cart item:', error);
+  //   }
+  // };
   // async function deleteCartItem(cartItemId) {
   //   try {
   //     const response = await fetch(`http://localhost:4000/cart?userId=${id}`, {
@@ -112,19 +112,19 @@ const Cart = () => {
   //     console.error('An error occurred:', error);
   //   }
   // }
-//   const handleRemoveCartItem = async (itemId) => {
-//     try {
-//         // Send a request to remove the item from the cart
-//         await fetch(`http://localhost:4000/cart?userId=${id}`, { // cart ma hit garni haina cart ko userId ma hit garni ho to display particular users cartlIst
-//             method: 'DELETE',
-//         });
+  const handleRemoveCartItem = async (itemId) => {
+    try {
+        // Send a request to remove the item from the cart
+        await fetch(`http://localhost:4000/cart?userId=${id}`, { // cart ma hit garni haina cart ko userId ma hit garni ho to display particular users cartlIst
+            method: 'DELETE',
+        });
 
-//         // Update the cartItems state by removing the item with matching productId
-//         setCartItems(prevItems => prevItems.length>0&& prevItems.filter(item => item.productId !== itemId));
-//     } catch (error) {
-//         console.error('Error removing cart item:', error);
-//     }
-// };
+        // Update the cartItems state by removing the item with matching productId
+        setCartItems(prevItems => prevItems.length>0&& prevItems.filter(item => item.productId !== itemId));
+    } catch (error) {
+        console.error('Error removing cart item:', error);
+    }
+};
 
 const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
   const itemPrice = item.productQuantity * item.productId.productPrice;
@@ -163,7 +163,7 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
                 
 
                    <div>
-                   <button onClick={() => deleteCart(item.productId)}>Delete</button> 
+                   <button onClick={() => handleRemoveCartItem(item.productId)}>Delete</button> 
                    </div>
                    <div>
 
@@ -182,7 +182,7 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
                  </li>
               ))}
 
-<div className={styles.checkoutDetails}>
+<div className={styles.checkoutDetails}> 
     {cartItems.userCarts?.length > 0 && (
       <div>
         {cartItems.userCarts.map((item) => (

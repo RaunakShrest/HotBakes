@@ -84,7 +84,7 @@ productDetails.save()
 //       }
 // };
 router.get('/cart', async (req, res) => { //add to cart get
-  console.log("hitted in server")
+  
   try{
 
 const cartItems = await Users.findById(req.query.userId).populate({
@@ -128,7 +128,7 @@ cartItems:cartItems
 router.delete('/cart', async (req, res) => {
   console.log("he")
   try {
-   console.log(req.body.id)
+   console.log(req.body)
     const cartItems = await Users.findByIdAndDelete(req.body );
 
 //     if (cartItems.deletedCount === 0) {
