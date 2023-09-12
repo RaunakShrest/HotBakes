@@ -114,11 +114,10 @@ const Cart = () => {
   // }
   const handleRemoveCartItem = async (itemId) => {
     try {
+      console.log(id)
         // Send a request to remove the item from the cart
-        await fetch(`http://localhost:4000/cart?userId=${id}`, { // cart ma hit garni haina cart ko userId ma hit garni ho to display particular users cartlIst
-            method: 'DELETE',
-        });
-
+        await axios.delete(`http://localhost:4000/cart/${itemId._id}/${id}`)
+        console.log("hello")
         // Update the cartItems state by removing the item with matching productId
         setCartItems(prevItems => prevItems.length>0&& prevItems.filter(item => item.productId !== itemId));
     } catch (error) {
@@ -176,26 +175,30 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
         width={100}
       /> */}
 
-<img src={`http://localhost:4000/productAvatar/${item.productId}`}/>
+{/* <img src={`http://localhost:4000/productAvatar/${item.productId}`}/> */}
     </div>
+    
  
                  </li>
-              ))}
+              ))} 
+                <div>
+     
 
-<div className={styles.checkoutDetails}> 
-    {cartItems.userCarts?.length > 0 && (
-      <div>
-        {cartItems.userCarts.map((item) => (
+
+
+    {cartItems?.userCarts?.length > 0 && (
+      <div className={styles.totalBox}>
+        {cartItems?.userCarts?.map((item) => (
           <ul key={item._id}>
             {/* Render item details */}
           </ul>
         ))}
-        <div>
+        <div >
           <div className={styles.cartTotalsText}>
-        <h2 className="text-2x1 font-medium center">Cart-Totals</h2>
+        <h2 >Cart-Totals</h2>
         </div>
         <div className={styles.overallTotalText}>
-        <h4 className="font-titleFont font-bold text-lg">Overall Total:</h4> {/* Display the overall total */}
+        <h4 >Overall Total:</h4> {/* Display the overall total */}
         </div>
         <div className={styles.totalPrice}>
         <h4 className="font-titleFont font-bold text-lg"> Rs:{totalPrice}</h4>
@@ -204,7 +207,7 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
         <p className="flex items-start gap-4 text-base">
           Note:{" "}
           <span className="text-2x1 font-medium">
-            The products you ordered are non-refundable 
+            The products you ordered are non-refundable.
           </span>
         </p>
         <div className={styles.proceedButton}>
@@ -221,6 +224,7 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
       
       </div>
       <Footer/>
+    
     </div>
    
   );

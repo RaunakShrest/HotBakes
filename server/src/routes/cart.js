@@ -106,51 +106,35 @@ cartItems:cartItems
   }
 })
 
-
-
-// router.delete("/cart/:itemId", async (req, res) => {
-//   try{
-//     const itemId=   req.params.itemId;
-//  const cartItems = await Users.deleteOne(req.query.userId);
-//  console.log(cartItems)
-//  if(!cartItems){
-//   return res.send("No products to delete")
-//  }else{
-//   res.json({
-//     cartItems:cartItems
-//   })}
-//   }
-//   catch(e)
-//   {
-//     console.error(e)
-//   }
-// })
-router.delete('/cart', async (req, res) => {
-  console.log("he")
+router.delete('/cart/:itemId/:userId', async (req, res) => {
   try {
-   console.log(req.body)
-    const cartItems = await Users.findByIdAndDelete(req.body );
+    const itemId = req.params.itemId;
+    const userId = req.params.userId;
+    // Find the user by ID
+    const user = await Users.findOne({ _id: userId });
+    console.log(user)
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+  
+    // Find the index of the item to remove in the cartitem array
+    const itemIndex = user.userCarts.findIndex((item) => item.productId === itemId);
+  
+    if (itemIndex === -1) {
+      return res.status(404).json({ message: 'Item not found in the cart' });
+    }
+  
+    // Remove the item from the cartitem array
+    user.userCarts.splice(itemIndex, 1);
+  
+    // Save the updated user object
+    await user.save();
+  
+    return res.status(200).json({ message: 'Item removed from cart' });
+  } catch (error) {
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
-//     if (cartItems.deletedCount === 0) {
-//       return res.status(404).json({ error: 'Cart item not found' });
-//     }
-//     res.json({ success: true });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// });
-if(!cartItems){
-  return res.send("No cartsItems to delete")
- }else{
-  res.json({
-    cartItems:cartItems
-  })}
-  }
-  catch(e)
-  {
-    console.error(e)
-  }
-})
 
 module.exports = router;

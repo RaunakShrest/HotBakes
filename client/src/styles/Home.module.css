@@ -185,6 +185,14 @@ left: -100px;
   top: auto;
 }
 
+.totalBox{
+  position: fixed;
+  padding: 5px;
+  left: 638px;
+  bottom: 273px;
+
+
+}
 .checkoutDetails{
   position: relative;
     left: 54%;

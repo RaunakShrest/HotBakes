@@ -65,6 +65,6 @@ const registerProduct= async (req, res) => {
       registerProduct,
       getAllProducts,
       getProductById,
-     getSearchProducts
+      getSearchProducts
       
     }
