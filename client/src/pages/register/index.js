@@ -123,8 +123,10 @@ const handleFileSave=(e)=>{
             {errors.role && touched.role ? <div className={styles.errorMessage}>{errors.role}</div> : null}
             <br/>
 
-            {/* <input type ="file" onChange={handleFileSave}></input> */}
-            <UploadButton onChange={handleFileSave}/>
+
+            <input type ="file" className={styles.choseFile} onChange={handleFileSave}></input>
+        
+            {/* <UploadButton onChange={handleFileSave}/> */}
                   
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
             
