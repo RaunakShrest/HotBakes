@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Image from "next/image";
 import axios from "axios";
 import styles from '@/styles/Home.module.css'
+import { Button, message } from 'antd';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -130,8 +131,12 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
   return total + itemPrice;
 }, 0);
 
+const handleProceed=()=>{
+  message.success("Your order has been sucessfully placed")
+}
+
   return (
-    <div>
+    <div className={styles.cartMain}>
    <Header/>
     <br/>
     <br/>
@@ -141,46 +146,28 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
    <div>
         <h1>Your cartItems are here</h1>
     
-         {/* {cartItems.map((cartItem) => (
-          <div key={cartItem._id}>
-            <h3>{cartItem.fullName}</h3>
-            <p>Phone Number: {cartItem.phoneNumber}</p>
-            <ul>
-             
-            </ul>
-          </div>
-        ))}  */}
-
-  {cartItems?.userCarts?.length>0 && cartItems?.userCarts?.map((item) => (
-                 <li key={item._id}>
-                 <h4>{item.productId.productName}</h4>
-                  <p>Quantity: {item.productQuantity}</p>
-                  <p>Price: {item.productId.productPrice}</p>
-
-              <p> Total: {item.productQuantity}X{item.productId.productPrice}={item.productQuantity * item.productId.productPrice}</p>
-                   
-                
-
-                   <div>
-                   <button onClick={() => handleRemoveCartItem(item.productId)}>Delete</button> 
-                   </div>
-                   <div>
-
-
-      {/* <Image
-       loader={()=>item.productId.productAvatar}
-        src={`http://localhost:4000/productAvatar/${item.productId.productAvatar}`}
-        alt={item.productId.productAvatar}
-        height={100}
-        width={100}
-      /> */}
-
-{/* <img src={`http://localhost:4000/productAvatar/${item.productId}`}/> */}
-    </div>
-    
- 
-                 </li>
-              ))} 
+  
+<div className={styles.cartBox}>
+<ul className={styles.cartList}>
+  {cartItems?.userCarts?.length > 0 &&
+    cartItems?.userCarts?.map((item) => (
+      <li className={styles.cartItem} key={item._id}>
+        <div className={styles.productInfo}>
+          <h4>{item.productId.productName}</h4>
+          <p>Quantity: {item.productQuantity}</p>
+          <p>Price: {item.productId.productPrice}</p>
+        </div>
+        <div className={styles.totalInfo}>
+          <p>
+            Total: {item.productQuantity}X{item.productId.productPrice}={item.productQuantity * item.productId.productPrice}
+          </p>
+        </div>
+        <div className={styles.actionButtons}>
+          <button onClick={() => handleRemoveCartItem(item.productId)}>Delete</button>
+        </div>
+      </li>
+    ))}
+</ul>
                 <div>
      
 
@@ -193,7 +180,7 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
             {/* Render item details */}
           </ul>
         ))}
-        <div >
+      
           <div className={styles.cartTotalsText}>
         <h2 >Cart-Totals</h2>
         </div>
@@ -211,19 +198,19 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
           </span>
         </p>
         <div className={styles.proceedButton}>
-        <button className="text-base bg-black text-white w-80 py-3 mt-6 hover:bg-gray-800 duration">Proceed to Checkout</button>
+        <button onClick={() => handleProceed()} className="text-base bg-black text-white w-80 py-3 mt-6 hover:bg-gray-800 duration">Proceed to Checkout</button>
         </div>
 
-        </div>
+        
       </div>
       
     )}
   </div>
               
-
+  </div>
       
       </div>
-      <Footer/>
+
     
     </div>
    

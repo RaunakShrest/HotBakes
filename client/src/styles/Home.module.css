@@ -1,11 +1,13 @@
 .body {
   overflow-y: scroll;
+  overflow-x:hidden;
 }
 
 
 .main{
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x :hidden;
   background-image: url(back.jpg);
   background-color: antiquewhite;
   height: 100vh;
@@ -18,6 +20,24 @@
   filter: saturate(55%);
   position: fixed;
   margin-top: -2%;
+}
+
+
+.cartMain {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x :hidden;
+
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  /* margin: -8px; */
+  /* padding-bottom: 50px; */
+  /* box-shadow: -4px 0px 20px rgba(0, 0, 0, 0.1); */
+  filter: saturate(55%);
+  position: fixed;
+  /* margin-top: -2%; */
 }
 .logo{
   width: 100%;
@@ -188,12 +208,12 @@ left: -100px;
 .totalBox{
   position: fixed;
   padding: 5px;
-  left: 638px;
-  bottom: 273px;
-
-
+  left: 750px;
+  bottom: 354px;
 }
-.checkoutDetails{
+
+
+.checkoutDetails{ 
   position: relative;
     left: 54%;
     /* top: 68%; */
@@ -222,4 +242,47 @@ left: -100px;
 }
 .proceedButton{
 
+}
+
+.cartList{
+  list-style: none;
+  padding: 0;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+ 
+}
+.cartItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.productInfo{
+  flex: 1;
+}
+.totalInfo{
+  flex: 1;
+  text-align: center;
+}
+
+.actionButtons button{
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cartBox{
+  display: flex;
+  justify-content: space-between;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

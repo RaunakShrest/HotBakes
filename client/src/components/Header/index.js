@@ -90,7 +90,7 @@ const Header=()=>{
             <div className="max-w-screen-x1 h-full mx-auto flex items-center justify-between">
             <div>
                 
-                <Image className={styles.logomage} src={logo2} width="5px" height="5px"></Image>
+                <Image onClick={()=>router.push('/')} className={styles.logomage} src={logo2} width="5px" height="5px"></Image>
                 </div>
 
               
@@ -102,7 +102,7 @@ const Header=()=>{
                     <li className="text-base text-black font-bold hover:text-orange-900
                     hover:underline underline-offset-2 decoration -[1px] cursor-pointer
                     duration-300">Products</li>
-                    <li className="text-base text-black font-bold hover:text-orange-900
+                    <li onClick={()=>router.push('/aboutUs')}className="text-base text-black font-bold hover:text-orange-900
                     hover:underline underline-offset-2 decoration -[1px] cursor-pointer
                     duration-300">About us</li> 
                      <li onClick={handleLogout} className="text-base text-black font-bold hover:text-orange-900
@@ -110,7 +110,7 @@ const Header=()=>{
                     duration-300">Logout</li> 
                      <BsFillCartFill on onClick={()=>router.push('/cart')}
                             style={{ width: "40px", height: "30px" }} />
-                            <span> 0</span>
+                            
                         
                                                                           
                     
