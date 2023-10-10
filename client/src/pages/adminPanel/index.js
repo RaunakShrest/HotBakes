@@ -125,12 +125,13 @@ const handleFileSaveProduct=(e)=>{
         
         <input type ="file" onChange={handleFileSaveProduct}></input>
         <br/>
-            <button type="submit" className={styles.loginSubmitButton}>Submit</button>
+        <br/>
+            <button type="submit" className={styles.adminSubmit}>Submit</button>
             <br/>
             <br/>
      
 
-            <button onClick={handleLogout}>Logout</button>
+            <button className={styles.adminLogout} onClick={handleLogout}>Logout</button>
           </Form>
         )}
       </Formik>

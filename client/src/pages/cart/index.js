@@ -34,6 +34,7 @@ const Cart = () => {
       console.error('Error fetching cart items:', error);
     }
   };
+  console.log("cart", cartItems);
    useEffect(() => {
     
   
@@ -41,78 +42,6 @@ const Cart = () => {
   }, []);
 
 
-
-  // const deleteCart = async (itemId) => {
-  //   try {
-  //     const response = await axios.delete(`http://localhost:4000/cart/${itemId}`);
-  //     if (response.status === 200) {
-  //       dispatch(removeCartItem(itemId)); // Assuming you have an action to remove the item from the Redux store
-  //     }
-  //   } catch (error) {
-  //     console.error('Error deleting cart item:', error);
-  //   }
-  // };
-  // const headers={
-  //   "Content-Type": "application/json",
-  // }
-  // const data={
-  //   id: item.productId
-  // }
-
-  // const deleteCart = async (itemId) => {
-  //   try {
-  //     const response = await axios.delete(`http://localhost:4000/cart`,{headers,data}
-        
-  //     )
-  //     if (response.status === 200) {
-  //       // Remove the item from the cartItems state
-  //       setCartItems(prevCartItems => prevCartItems.filter(item => item._id !== itemId));
-  //     }
-  //   } catch (error) {
-  //     console.error('Error deleting cart item:', error);
-  //   }
-  // };
-  // const deleteCart = async (item) => {
-  //   try {
-  //     const response = await axios.delete(`http://localhost:4000/cart?userId=${id}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       data: {
-  //         id: item.productId,
-  //       },
-  //     });
-  
-  //     if (response.status === 200) {
-  //       setCartItems(prevCartItems =>
-  //         prevCartItems.filter(cartItems => cartItems._id !== item._id)
-  //       );
-  //     }
-  //   } catch (error) {
-  //     console.error('Error deleting cart item:', error);
-  //   }
-  // };
-  // async function deleteCartItem(cartItemId) {
-  //   try {
-  //     const response = await fetch(`http://localhost:4000/cart?userId=${id}`, {
-  //       method: 'DELETE',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({ _id: cartItemId })
-  //     });
-  
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       console.log(data.cartItems); // Handle the deleted cart item data
-  //     } else {
-  //       const errorData = await response.json();
-  //       console.error(errorData.error); // Handle the error message
-  //     }
-  //   } catch (error) {
-  //     console.error('An error occurred:', error);
-  //   }
-  // }
   const handleRemoveCartItem = async (itemId) => {
     try {
       console.log(id)
@@ -131,9 +60,40 @@ const totalPrice = cartItems?.userCarts?.reduce((total, item) => {
   return total + itemPrice;
 }, 0);
 
-const handleProceed=()=>{
-  message.success("Your order has been sucessfully placed")
+const handleProceed =async()=>{
+
+  try {
+    const res = await axios.post('http://localhost:4000/order', {
+      fullName: cartItems.fullName,
+      phoneNumber: cartItems.phoneNumber,
+      item: cartItems.userCarts,
+      totalPrice: totalPrice
+    })
+    console.log(res, "res");
+    message.success("Your items have been sucessfully ordered")
+    
+  } catch (err) {
+    console.log(err);
+    alert("Something went wrong")
+    
+  }
+
+  // const requestOptions = {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({totalPrice})
+  // };
+  
+   
+  //   const data= await res.json()
+  //   if(data){
+  //     message.success("Your order has been sucessfully placed")
+  //   }
+  // } 
+   
+  
 }
+
 
   return (
     <div className={styles.cartMain}>
@@ -198,7 +158,7 @@ const handleProceed=()=>{
           </span>
         </p>
         <div className={styles.proceedButton}>
-        <button onClick={() => handleProceed()} className="text-base bg-black text-white w-80 py-3 mt-6 hover:bg-gray-800 duration">Proceed to Checkout</button>
+        <button onClick={ handleProceed} className="text-base bg-black text-white w-80 py-3 mt-6 hover:bg-gray-800 duration">Proceed to Checkout</button>
         </div>
 
         
@@ -215,7 +175,7 @@ const handleProceed=()=>{
     </div>
    
   );
-};
+        };
 
 export default Cart;
   // useEffect(() => {

@@ -286,3 +286,24 @@ left: -100px;
   overflow-y: auto;
   overflow-x: hidden;
 }
+.orderTitle{
+  position: relative;
+  font-size: 21px;
+  top: 58px;
+  align-content: center;
+  left: 50%;
+}
+.orderCard{
+  border: -3px solid #ccc;
+  border-radius: -10px;
+  padding: 16px;
+  margin: 27px auto;
+  width: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #FFC;
+  position: relative;
+  font-size: 15px;
+  top: 58px;
+  left: 2%;
+  transform: translateX(-49%);
+}

@@ -229,3 +229,30 @@ transform: translate(-50%, -50%);
   font-size: 29px;
   position: relative;
 }
+
+.adminSubmit{
+  background-color: #007bff; /* Change to your desired background color */
+  color: #fff; /* Text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Remove button border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor style on hover */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  position: relative;
+  left: 119px;
+}
+
+.adminLogout{
+  background-color: #d9534f; /* Change to your desired background color */
+  color: #fff; /* Text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Remove button border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor style on hover */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  position: relative;
+  top: 25px;
+  left: 120px;
+}
