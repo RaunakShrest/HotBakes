@@ -29,6 +29,7 @@ const path = require('path')
     
     router.post('/order',Book.registerOrder)
     router.get('/allOrder',Book.getAllOrder)
+    // router.delete('/deleteOrderbyId',Book.deleteOrder)
   
   
   

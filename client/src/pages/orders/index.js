@@ -10,6 +10,8 @@ import axios from 'axios';
 import { Card, Space } from 'antd';
 const { Meta } = Card;
 import antDcard from '@/components/antdcard';
+import {AiFillDelete} from "react-icons/ai";
+import { message } from 'antd';
 
 
 const Orders = () => {
@@ -30,7 +32,28 @@ const Orders = () => {
         }
         
     }
-
+    const handleAcceptOrder = async (orderId) => {
+      try {
+        // Send a request to update the order status to "completed" on the server
+        await axios.put(`http://localhost:4000/updateOrderStatus/${orderId}`, { status: 'completed' });
+    
+        // Update the order status in the local state
+        const updatedOrders = allOrder.map((order) => {
+          if (order._id === orderId) {
+            return { ...order, status: 'completed' };
+          }
+          return order;
+        });
+    
+        setAllOrder(updatedOrders);
+    
+        message.success("Order has been accepted");
+      } catch (error) {
+        console.error("Error accepting order:", error);
+        message.error("Failed to accept the order. Please check the server logs.");
+      }
+    }
+    
     useEffect(()=>{
         fetchAll()
     },[])
@@ -38,7 +61,7 @@ const Orders = () => {
         <div>
             
             <AdminHeader/>
-            <h1 className={styles.orderTitle}>Available Orders</h1>
+            <h1 className={styles.orderTitle}><u>Available Orders</u></h1>
 
           {/* {allOrder?.allOrder?.map((item)=>{
             return( <><div>
@@ -58,19 +81,31 @@ const Orders = () => {
 
  <div  className={styles.orderCard}key={order._id}>
       Order ID: {order._id} <br/>
-      Customer: {order.fullName} <br />
-      Phone Number: {order.phoneNumber} <br />  
+      Customer: <strong>{order.fullName} </strong><br />
+      Phone Number:<strong> {order.phoneNumber} </strong><br />  
       
       
-      {order?.item?.map((item) => {
-        return (
-          <div key={item.productId._id}>
-            ProductName: {item.productId.productName} <br />
-             Quantity: {item.productQuantity} <br />
-          </div>
-        );
-      } )}
-      Total Price: Rs {order.totalPrice} <br />
+      <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+  <thead>
+    <tr>
+      <th style={{ border: '1px solid black', padding: '5px' }}>Product Name</th>
+      <th style={{ border: '1px solid black', padding: '10px' }}>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {order?.item?.map((item) => (
+      <tr key={item.productId._id}>
+        <td style={{ border: '1px solid black', padding: '8px' }}>{item.productId.productName}</td>
+        <td style={{ border: '1px solid black', padding: '8px' }}>{item.productQuantity}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+Total Price: <strong style={{ color: 'light green' }}>Rs {order.totalPrice}</strong> <br />
+      Status: {order.status}
+      <button onClick={() => handleAcceptOrder(order._id)} className={styles.acceptOrderButton}>Accept</button>
+
+      
       <br/>
     </div>
     

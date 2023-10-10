@@ -250,6 +250,9 @@ left: -100px;
   position: fixed;
   overflow-x: hidden;
   overflow-y: auto;
+  font-size: 19px;
+  background-color: beige;
+  font-family: monospace;
  
 }
 .cartItem{
@@ -261,6 +264,13 @@ left: -100px;
   margin-bottom: 10px;
   overflow-x: hidden;
   overflow-y: auto;
+}
+.cartTitle{
+  font-size: 23px;
+  position: relative;
+  top: -35px;
+  left: 60px;
+  font-family: cursive;
 }
 
 .productInfo{
@@ -289,21 +299,38 @@ left: -100px;
 .orderTitle{
   position: relative;
   font-size: 21px;
-  top: 58px;
+  top: 43px;
+  font-size: 32px;
+  font-family: cursive;
   align-content: center;
-  left: 50%;
+  left: 12%;
 }
 .orderCard{
   border: -3px solid #ccc;
-  border-radius: -10px;
+  font-family: math;
   padding: 16px;
   margin: 27px auto;
-  width: 50%;
+  width: 40%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #FFC;
   position: relative;
-  font-size: 15px;
+  font-size: 18px;
   top: 58px;
-  left: 2%;
+  right: 10%;
   transform: translateX(-49%);
+}
+
+.acceptOrderButton{
+  position: relative;
+  width: 25%;
+  padding: 7px;
+  line-height: 15spx;
+  background-color: aliceblue;
+  margin-left: 350px;
+  top: 11px;
+  border-radius: 49px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid darkgray;
 }

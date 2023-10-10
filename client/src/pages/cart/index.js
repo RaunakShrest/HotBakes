@@ -104,7 +104,7 @@ const handleProceed =async()=>{
 
 
    <div>
-        <h1>Your cartItems are here</h1>
+        <h1 className={styles.cartTitle}>Your cartItems are here</h1>
     
   
 <div className={styles.cartBox}>
