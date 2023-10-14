@@ -29,6 +29,9 @@ const path = require('path')
     
     router.post('/order',Book.registerOrder)
     router.get('/allOrder',Book.getAllOrder)
+    router.post('/oneuser',Book.getById)
+    router.get('/countOrder',Book.countOrder)
+    router.put('/updateOrder',Book.updateOrderStatus)
     // router.delete('/deleteOrderbyId',Book.deleteOrder)
   
   

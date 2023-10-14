@@ -102,9 +102,9 @@ const Header=()=>{
                     <li className="text-base text-black font-bold hover:text-orange-900
                     hover:underline underline-offset-2 decoration -[1px] cursor-pointer
                     duration-300">Products</li>
-                    <li onClick={()=>router.push('/aboutUs')}className="text-base text-black font-bold hover:text-orange-900
+                    <li onClick={()=>router.push('/orderHistory')}className="text-base text-black font-bold hover:text-orange-900
                     hover:underline underline-offset-2 decoration -[1px] cursor-pointer
-                    duration-300">About us</li> 
+                    duration-300">Order history</li> 
                      <li onClick={handleLogout} className="text-base text-black font-bold hover:text-orange-900
                     hover:underline underline-offset-2 decoration -[1px] cursor-pointer
                     duration-300">Logout</li> 

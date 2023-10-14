@@ -20,6 +20,11 @@ const initialValues = {
     phoneNumber: Yup.number()
       .typeError('must be a number')
       .test('checkLength', 'the number should exactly be 10 digits', val => val.toString().length == 10)
+      .test('startsWith', 'Phone number must begin with "01" or "98"', val => {
+        const phoneNumberString = val.toString();
+        return phoneNumberString.startsWith('01') || phoneNumberString.startsWith('98');
+      })
+      
       .required('Required'),
     password: Yup.string()
       .min(2, 'Too Short!')

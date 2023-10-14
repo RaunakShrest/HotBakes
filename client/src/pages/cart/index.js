@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
- import Footer from "@/components/Footer";
+
 import { useSelector, useDispatch } from 'react-redux';
 import Image from "next/image";
 import axios from "axios";
@@ -14,6 +14,8 @@ const Cart = () => {
   const { token, role, id } = useSelector(state => state.user);
    const [productItems, setProductItems] = useState([]);
    const [productTotal, seproductTotal] = useState(0)
+   console.log('antd', id);
+  
    
    const fetchCartItems = async () => {
     try {
@@ -41,6 +43,10 @@ const Cart = () => {
     fetchCartItems();
   }, []);
 
+  
+  
+
+
 
   const handleRemoveCartItem = async (itemId) => {
     try {
@@ -67,7 +73,8 @@ const handleProceed =async()=>{
       fullName: cartItems.fullName,
       phoneNumber: cartItems.phoneNumber,
       item: cartItems.userCarts,
-      totalPrice: totalPrice
+      totalPrice: totalPrice,
+      
     })
     console.log(res, "res");
     message.success("Your items have been sucessfully ordered")
@@ -90,6 +97,8 @@ const handleProceed =async()=>{
   //     message.success("Your order has been sucessfully placed")
   //   }
   // } 
+  fetchCartItems()
+  
    
   
 }

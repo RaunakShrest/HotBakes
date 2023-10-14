@@ -11,7 +11,9 @@ const orderSchema = new mongoose.Schema({
         type:String,
         requried:true
     },
-    status: {type: String, default: 'PENDING'}
+    status: {
+      type: String,
+       default: 'PENDING'}
    
     //userCarts:[{productId:String}]
     //userCarts: [{productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Products'}, productQuantity: {type:String}, productName: {type:String}}]

@@ -3,8 +3,9 @@ const router=express.Router()
 const jwt = require('jsonwebtoken')
 const path = require('path')
 //const { model } = require('mongoose');
-const Carts = require('../model/cart')
+// const Carts = require('../model/cart')
 const Users = require('../model/users')
+const mongoose = require('mongoose'); // Import Mongoose
 
 router.post('/cart', async (req, res) => { //add to cart
     //user found in db?
@@ -42,69 +43,36 @@ productDetails.save()
 })
 
 
-// router.get('/cart', async (req, res) => { //add to cart get
-//     //user found in db?
-//     // try{
-//     //    const phoneNumber= req.query.phoneNumber
-//     //     const cartItems= await Carts.find({phoneNumber:phoneNumber, productId})
-//     //     res.json(cartItems)
-   
 
-//     // } catch(error) {
-//     //     console.error("Error fetching cart items",error)
-//     //     res.status(500).json({error:"ternal server error"})
-//     // } \
-//     const cartList= await Users.findById(req.query.id).populate('productId');
-//     if(cartList){
-//       res.json({
-//         cartList:cartList
-//       })
-//     }
+router.get('/cart', async (req, res) => {
+  try {
+    const userId = req.query.userId;
 
-   
-  
-//   console.log(cartList)
-// })
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ error: 'Invalid userId' });
+    }
 
+    const cartItems = await Users.findById(userId).populate({
+      path: 'userCarts',
+      populate: {
+        path: 'productId',
+        model: 'Products'
+      }
+    });
 
-    // const options = {
-    //   path: 'userCarts.productId',
-    //   model: 'Users'
-    // };
-
-//     const popObj = {
-//       path: 'Users',
-//       options: { sort: { position: -1 } },
-//       populate: {
-//         path: 'userCarts',
-//         select: 'name',
-//         populate: {
-//           path: 'permissions'
-//         }
-//       }
-// };
-router.get('/cart', async (req, res) => { //add to cart get
-  
-  try{
-
-const cartItems = await Users.findById(req.query.userId).populate({
- path: 'userCarts',
- populate: {
- path: 'productId',
- model: 'Products'
- }
- })
-if(cartItems){   
-  res.json({
-cartItems:cartItems
-})
-
-}
-
-  }catch(error){
-    console.log(error)
+    if (cartItems) {
+      res.json({
+        cartItems: cartItems
+      });
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching cart items:', error);
+    res.status(500).json({ error: 'Server error' });
   }
-})
+});
+
 
 router.delete('/cart/:itemId/:userId', async (req, res) => {
   try {

@@ -149,7 +149,7 @@ display: flex;
   text-align: center;
   position: relative;
   top: 40px;
-left: -100px;
+left: -40px;
 }
 
 .productprice{
@@ -166,7 +166,7 @@ left: -100px;
   position: relative;
   top: 184px;
   /* left: 23px; */
-  right: 720px;
+  right: 780px;
 }
 
 
@@ -188,7 +188,7 @@ left: -100px;
   top: -184%;
 }
 .addtoCartButton{
-  left: 60%;
+  left: 1%;
   position: relative;
   /* top: -5%; */
   bottom: 50%;
@@ -319,6 +319,24 @@ left: -100px;
   right: 10%;
   transform: translateX(-49%);
 }
+.orderHistoryTitle{
+  margin-top: 10px;
+  font-size: 23px;
+  font-family: cursive;
+  position: relative;
+  /* text-align: center; */
+  top: 28px;
+  left:200px;
+}
+.orderHistoryFor{
+  margin-top: 10px;
+  font-size: 23px;
+  font-family: cursive;
+  position: relative;
+  /* text-align: center; */
+  top: 28px;
+  left: 143px;
+}
 
 .acceptOrderButton{
   position: relative;
@@ -326,11 +344,64 @@ left: -100px;
   padding: 7px;
   line-height: 15spx;
   background-color: aliceblue;
-  margin-left: 350px;
+  margin-left: 500px;
   top: 11px;
   border-radius: 49px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: 1px solid darkgray;
+}
+.orderHistorycard{
+  border: -3px solid #ccc;
+  font-family: math;
+  padding: 16px;
+  margin: 27px auto;
+  width: 40%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #FFC;
+  position: relative;
+  font-size: 18px;
+  top: 58px;
+  right: 10%;
+  transform: translateX(-49%);
+}
+
+
+.adminDashboard{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.admindashboardcard{
+  background-color: #FD8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  margin: 20px;
+  transition: transform 0.2s;
+  position: relative;
+  bottom: 26%;
+  left: -200px;
+
+}
+.admindashboardcard:hover {
+  transform: scale(1.05);
+}
+.reportText{
+  font-size: 25px;
+  font-family: fantasy;
+}
+.reportTitle{
+  font-size: 25px;
+    position: relative;
+    top: -356px;
+    left: 640px;
+    font-family: fangsong;
 }
