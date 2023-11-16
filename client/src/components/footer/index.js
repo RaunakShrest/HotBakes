@@ -6,7 +6,7 @@ import{
     FaHome
 } from "react-icons/fa";
 import { useRouter } from "next/router";
-
+import styles from '@/styles/Home.module.css'
 const Footer=()=>{
     const router= useRouter();
     return(
@@ -34,6 +34,7 @@ const Footer=()=>{
         <p>Mobile: 9818241213</p>
         <p>Telephone: 01-4030728</p>
         <p>Email:hotbakes@gmail.com</p>
+        <p className={styles.inquiryFooter}> In case of inquiry : 98417176235</p>
     </div>
     </div>
 

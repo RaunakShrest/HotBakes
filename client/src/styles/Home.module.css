@@ -405,3 +405,8 @@ left: -40px;
     left: 640px;
     font-family: fangsong;
 }
+.inquiryFooter{
+  position: relative;
+  top: -75px;
+  left: 215%;
+}

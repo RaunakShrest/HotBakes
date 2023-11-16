@@ -9,13 +9,13 @@ import Footer from '@/components/footer'
 
 const Reports = () => {
     
-const [totalOrder, setTotalOrder]= useState([])
+const [totalOrder, setTotalOrder]= useState([]) //totalOrder haru vaneko tala html jsx ma lekhni
 const [totalUser, setTotalUser]= useState([])
 const [totalP, setTotalP]= useState([])
     const fetchAll = async () => {
 
         try {
-          const getOrdrer = await axios.get("http://localhost:4000/product/countProduct")
+          const getOrdrer = await axios.get("http://localhost:4000/product/countProduct") // obejct ma akko hunxa so muni getOrder.data gareko
           setTotalP(getOrdrer.data)
           
     
