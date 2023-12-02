@@ -3,8 +3,9 @@ const router=express.Router()
 const jwt = require('jsonwebtoken')
 const path = require('path')
 //const { model } = require('mongoose');
-const Carts = require('../model/cart')
+// const Carts = require('../model/cart')
 const Users = require('../model/users')
+const mongoose = require('mongoose'); // Import Mongoose
 
 router.post('/cart', async (req, res) => { //add to cart
     //user found in db?
@@ -42,115 +43,66 @@ productDetails.save()
 })
 
 
-// router.get('/cart', async (req, res) => { //add to cart get
-//     //user found in db?
-//     // try{
-//     //    const phoneNumber= req.query.phoneNumber
-//     //     const cartItems= await Carts.find({phoneNumber:phoneNumber, productId})
-//     //     res.json(cartItems)
-   
 
-//     // } catch(error) {
-//     //     console.error("Error fetching cart items",error)
-//     //     res.status(500).json({error:"ternal server error"})
-//     // } \
-//     const cartList= await Users.findById(req.query.id).populate('productId');
-//     if(cartList){
-//       res.json({
-//         cartList:cartList
-//       })
-//     }
-
-   
-  
-//   console.log(cartList)
-// })
-
-
-    // const options = {
-    //   path: 'userCarts.productId',
-    //   model: 'Users'
-    // };
-
-//     const popObj = {
-//       path: 'Users',
-//       options: { sort: { position: -1 } },
-//       populate: {
-//         path: 'userCarts',
-//         select: 'name',
-//         populate: {
-//           path: 'permissions'
-//         }
-//       }
-// };
-router.get('/cart', async (req, res) => { //add to cart get
-  
-  try{
-
-const cartItems = await Users.findById(req.query.userId).populate({
- path: 'userCarts',
- populate: {
- path: 'productId',
- model: 'Products'
- }
- })
-if(cartItems){   
-  res.json({
-cartItems:cartItems
-})
-
-}
-
-  }catch(error){
-    console.log(error)
-  }
-})
-
-
-
-// router.delete("/cart/:itemId", async (req, res) => {
-//   try{
-//     const itemId=   req.params.itemId;
-//  const cartItems = await Users.deleteOne(req.query.userId);
-//  console.log(cartItems)
-//  if(!cartItems){
-//   return res.send("No products to delete")
-//  }else{
-//   res.json({
-//     cartItems:cartItems
-//   })}
-//   }
-//   catch(e)
-//   {
-//     console.error(e)
-//   }
-// })
-router.delete('/cart', async (req, res) => {
-  console.log("he")
+router.get('/cart', async (req, res) => {
   try {
-   console.log(req.body)
-    const cartItems = await Users.findByIdAndDelete(req.body );
+    const userId = req.query.userId;
 
-//     if (cartItems.deletedCount === 0) {
-//       return res.status(404).json({ error: 'Cart item not found' });
-//     }
-//     res.json({ success: true });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// });
-if(!cartItems){
-  return res.send("No cartsItems to delete")
- }else{
-  res.json({
-    cartItems:cartItems
-  })}
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ error: 'Invalid userId' });
+    }
+
+    const cartItems = await Users.findById(userId).populate({
+      path: 'userCarts',
+      populate: {
+        path: 'productId',
+        model: 'Products'
+      }
+    });
+
+    if (cartItems) {
+      res.json({
+        cartItems: cartItems
+      });
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching cart items:', error);
+    res.status(500).json({ error: 'Server error' });
   }
-  catch(e)
-  {
-    console.error(e)
+});
+
+
+router.delete('/cart/:itemId/:userId', async (req, res) => {
+  try {
+    const itemId = req.params.itemId;
+    const userId = req.params.userId;
+    // Find the user by ID
+    const user = await Users.findOne({ _id: userId });
+    console.log(user)
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+  
+    // Find the index of the item to remove in the cartitem array
+    const itemIndex = user.userCarts.findIndex((item) => item.productId === itemId);
+  
+    if (itemIndex === -1) {
+      return res.status(404).json({ message: 'Item not found in the cart' });
+    }
+  
+    // Remove the item from the cartitem array
+    user.userCarts.splice(itemIndex, 1);
+  
+    // Save the updated user object
+    await user.save();
+  
+    return res.status(200).json({ message: 'Item removed from cart' });
+  } catch (error) {
+    return res.status(500).json({ message: 'Internal server error' });
   }
-})
+});
+
 
 module.exports = router;

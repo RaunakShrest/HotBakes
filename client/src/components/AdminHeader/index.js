@@ -35,12 +35,18 @@ const AdminHeader=()=>{
                     <li onClick={()=>router.push('/adminPanel')} className="text-base text-black font-bold hover:text-orange-900
                     hover:underline underline-offset-2 decoration -[1px] cursor-pointer
                     duration-300">Admin panel</li>
+                    <li onClick={()=>router.push('/orders')} className="text-base text-black font-bold hover:text-orange-900
+                    hover:underline underline-offset-2 decoration -[1px] cursor-pointer
+                    duration-300">Orders</li>
+                         <li onClick={()=>router.push('/report')} className="text-base text-black font-bold hover:text-orange-900
+                    hover:underline underline-offset-2 decoration -[1px] cursor-pointer
+                    duration-300">Reporting</li>
                      <li onClick={handleLogout} className="text-base text-black font-bold hover:text-orange-900
                     hover:underline underline-offset-2 decoration -[1px] cursor-pointer
                     duration-300">Logout</li>
                      <BsFillCartFill
                             style={{ width: "40px", height: "30px" }} />
-                            <span> 0</span>
+                           
                         
                                                                           
                     

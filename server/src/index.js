@@ -4,6 +4,7 @@ const dbConnect = require('./connection/dbConnect')
 const userRoute = require('./routes/user')
 const productRoute = require('./routes/product')
 const cartRoute= require('./routes/cart')
+const orderRoute= require('./routes/order')
 require('dotenv').config()
 const app = express()
 const Users= require('./model/users')
@@ -18,7 +19,7 @@ app.use(cors())
 app.use('/',userRoute)
 app.use('/',productRoute)
 app.use('/',cartRoute)
-
+app.use('/',orderRoute)
 
 
 app.listen(port, () => {

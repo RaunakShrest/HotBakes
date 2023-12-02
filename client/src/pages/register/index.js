@@ -14,22 +14,23 @@ import UploadButton from '@/components/registerUpload';
   fullName: Yup.string()
      .min(2, 'Too Short!')
      .max(50, 'Too Longgggg!')
+     .matches(/^[A-Za-z ]*$/, 'Only alphabetic characters are allowed')
      .required('Required'),
     password: Yup.string()
      .min(2, 'Too Short!')
      .max(50, 'Too Long!')
      .required('Required'),
-    phoneNumber:Yup.string()
-     .min(10, 'Too Short!')
-     .max(10, 'Too Long!')
-     .required('Required'),
+     phoneNumber: Yup.string()
+     .matches(/^(01|98)\d{8}$/, 'Phone number must begin with "01" or "98" and be 10 digits in total')
+     .required("Required"),
      confirmPassword: Yup.string().oneOf(
       [Yup.ref("password"), null],
-      "Passwords must match"
+      "Passwords must match"  
       
     ).required('required'),
    role: Yup.string()
     .required('Required')
+    .oneOf(['user'], 'Role must be user'),
  });
 
 //product_Register
@@ -107,11 +108,11 @@ const handleFileSave=(e)=>{
             <Field name="fullName" placeholder="fullName" className={styles.inputbox}  />
             {errors.fullName && touched.fullName ? <div className={styles.errorMessage}>{errors.fullName}</div> : null}
             <br/>
-            <Field name="password" placeholder="password"className={styles.inputbox} />
+            <Field name="password" type="password" placeholder="password"className={styles.inputbox} />
             {errors.password && touched.password ? <div className={styles.errorMessage}>{errors.password}</div> : null}
             <br/>
 
-              <Field name="confirmPassword"  placeholder="confirm password" className={styles.inputbox}/>
+              <Field name="confirmPassword" type="password" placeholder="confirm password" className={styles.inputbox}/>
               {errors.confirmPassword && touched.confirmPassword  ? <div className={styles.errorMessage}>{errors.confirmPassword }</div> : null}
   
             <br/>
@@ -123,8 +124,10 @@ const handleFileSave=(e)=>{
             {errors.role && touched.role ? <div className={styles.errorMessage}>{errors.role}</div> : null}
             <br/>
 
-            {/* <input type ="file" onChange={handleFileSave}></input> */}
-            <UploadButton onChange={handleFileSave}/>
+
+            <input type ="file" className={styles.choseFile} onChange={handleFileSave}></input>
+        
+            {/* <UploadButton onChange={handleFileSave}/> */}
                   
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
             

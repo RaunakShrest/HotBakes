@@ -20,7 +20,7 @@ router.post('/login', async (req, res) => {
     if (isMatched) {
       //generete the token for this matched user and send the token as reponse
       const token = jwt.sign({ phoneNumber: req.body.phoneNumber }, process.env.SECRET_KEY);
-      res.json({ message: "Login Succcess", success: true, token: token, role: data.role, id:data._id })
+      res.json({ message: "Login Succcess", success: true, token: token, role: data.role, id:data._id, phoneNumber:data.phoneNumber })
     } else {
       res.json({ message: "Login Failed", success: false })
     }
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
   }
 
 })
-
+router.get('/countUser', User.countUser)
 router.get('/avatar/:id', async (req, res) => {
   const userData = await Users.findById(req.params.id)
 

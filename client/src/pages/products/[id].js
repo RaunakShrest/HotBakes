@@ -18,6 +18,7 @@ const { phoneNumber, token, fullname, id } = useSelector(state => state.user);
 const { productId, productName } = router.query
 
 
+
   useEffect(()=>{
     getProductList() 
   }, [router.query.id])
@@ -53,7 +54,7 @@ const { productId, productName } = router.query
                 },
                 body: JSON.stringify(body),
             });
-
+   console.log(response);
             if (response.ok) {
                 console.log('product added to cart');
                 alert("product added to cart");
@@ -75,7 +76,7 @@ const { productId, productName } = router.query
 }
 
 
-
+//console.log(productDetails);
 
   return (
     <div>
@@ -120,22 +121,11 @@ const { productId, productName } = router.query
       </div>
       </div>
 <div className={styles.productDescription}>
-      <p>{productDetails.productDescription} </p>
+      <p><strong> Description: {productDetails.productDescription} </strong></p>
   
       </div>
    <div className={styles.productControllerbuttons}>
-    <div className='w-52 flex items-center justify-between text-gray-500 gap-4 border p-3'>
-    <p> Quantity</p>
-   <div className="flex items-center gap-4 txt-sm font-semibold">
-   <button className='border h-5 font-normal text-lg flex items-center
-    justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer
-    duration-300 active:bg-black'>-</button>
-    <span>{1}</span>
-    <button className='border h-5 font-normal text-lg flex items-center
-    justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer
-    duration-300 active:bg-black'>+</button>
-   </div>
-    </div>
+   
     <div className={styles.addtoCartButton}>
     <button  onClick={handleAddCart}className='bg-black text-white py-3 px-6 active:bg-gray-800'>add to cart </button> 
     </div>

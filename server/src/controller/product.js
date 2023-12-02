@@ -12,6 +12,18 @@ const registerProduct= async (req, res) => {
         }
       }
 
+       const countProduct = async (req,res)=>{
+         const countProduct = await Products.countDocuments()
+        //  console.log(countProduct);
+         try {
+           const countProduct = await Products.countDocuments()
+        //  console.log(countProduct);
+         res.status(200).json(countProduct)
+         } catch (error) {
+           res.status(400).json(error)
+         }
+       }
+
 
       const getAllProducts= async (req,res) =>{ //pagination
         const productData = await Products.find().skip((req.query.page-1)*8).limit(8)
@@ -65,6 +77,7 @@ const registerProduct= async (req, res) => {
       registerProduct,
       getAllProducts,
       getProductById,
-     getSearchProducts
+      getSearchProducts, 
+      countProduct
       
     }
