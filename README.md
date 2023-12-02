@@ -41,7 +41,7 @@ Authorization
 
 
     - [ ] Logout
-           - [x] Ending session on logout
+        - [x] Ending session on logout
 
 - [ ] Register
     - [x] password hash from bcrypt
@@ -53,6 +53,10 @@ Authorization
     - [x] added web tokens
     - [x] accessed from login dashboard
     - [x] Add products
+    - [x] View Product details.
+    - [x] View Orders
+    - [x] Change order status.
+    - [x] View reports of bakery   
 
  - [ ] Admin Dashboard
      - [x] Only accessed after being logged in as admin
@@ -68,5 +72,7 @@ Authorization
     - [x] View overall totals
     - [x] Pagination
     - [x] Search features
+    - [x] Purchase and create orders
+    - [x] View order history 
 
 
