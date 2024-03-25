@@ -72,7 +72,7 @@ const registerOrder = async (req, res) => {
 
  const updateOrderStatus= async (req,res)=>{
   const id = req.query.orderId
-  console.log(id,"what is id ");
+  //console.log(id,"what is id ");
   try {
     const updateStatus = await Orders.findById(id)
     console.log("updateStatus", updateStatus);
