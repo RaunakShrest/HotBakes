@@ -30,7 +30,7 @@ import UploadButton from '@/components/registerUpload';
     ).required('required'),
    role: Yup.string()
     .required('Required')
-    .oneOf(['user'], 'Role must be user'),
+    // .oneOf(['user'], 'Role must be user'),
  });
 
 //product_Register
