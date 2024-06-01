@@ -72,7 +72,7 @@ Authorization
     - [x] View overall totals
     - [x] Pagination
     - [x] Search features
-    - [x] Purchase and create orders
-    - [x] View order history 
+    - [x] Purchase and create orders.
+    - [x] View order history .
 
 
