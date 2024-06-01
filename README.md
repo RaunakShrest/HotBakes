@@ -33,8 +33,8 @@ For form validation notes:
 Features
 Authorization
 - [ ] Login 
-    - [x] frontend form validation
-    - [x] backend validation
+    - [x] frontend form validation.
+    - [x] backend validation.
     - [x] password hash from bcrypt
     - [x] Admin login check
     - [x] User login check
