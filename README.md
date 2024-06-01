@@ -18,12 +18,11 @@ Technology Stacks
 - Middlewares
 - Multer for file upload features
 - Pagination
-- Cors
-
+- Cors.
 
 
 For form validation notes:
-1) Bcrypt is used for password hashing to install this use: npm i bcrycpt
+1) Bcrypt is used for password hashing to install this use: npm i bcrycpt.
 2) JWT is used for generating web tokens the secret key is not uploaded in github for security reasons so you can generate your own security keys through crypto in terminal.
 3) Use npm install jsonwebtoken to install webtoken package of jwt.
 4) Use dotenv for linking the secret key from env file.
