@@ -60,7 +60,7 @@ Authorization
 
  - [ ] Admin Dashboard
      - [x] Only accessed after being logged in as admin
-     - [x] Delete the products function
+     - [x] Delete the products function.
 
 - [x] Added Tokens
 
