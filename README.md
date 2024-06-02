@@ -44,7 +44,7 @@ Authorization
 
 - [ ] Register
     - [x] password hash from bcrypt
-    - [x] added web tokens
+    - [x] added web tokens.
 - [ ] Change Password
 
 - [ ] Admin panel
