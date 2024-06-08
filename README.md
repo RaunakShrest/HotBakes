@@ -35,8 +35,8 @@ Authorization
     - [x] frontend form validation.
     - [x] backend validation.
     - [x] password hash from bcrypt
-    - [x] Admin login check
-    - [x] User login check
+    - [x] Admin login check.
+    - [x] User login check.
 
 
     - [ ] Logout
