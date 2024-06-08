@@ -34,16 +34,16 @@ Authorization
 - [ ] Login 
     - [x] frontend form validation.
     - [x] backend validation.
-    - [x] password hash from bcrypt
+    - [x] password hash from bcrypt.
     - [x] Admin login check.
     - [x] User login check.
 
 
     - [ ] Logout
-        - [x] Ending session on logout
+        - [x] Ending session on logout.
 
 - [ ] Register
-    - [x] password hash from bcrypt
+    - [x] password hash from bcrypt.
     - [x] added web tokens.
 - [ ] Change Password
 
