@@ -26,7 +26,7 @@ const registerUser= async (req, res) => {
   }
 
   const countUser = async (req,res)=>{
-   
+   // used to count user for admin dashboard
     try {
       const countUser = await Users.countDocuments()
 
