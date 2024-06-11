@@ -29,7 +29,7 @@ const registerUser= async (req, res) => {
    
     try {
       const countUser = await Users.countDocuments()
-    // console.log(countUser);
+
     res.status(200).json(countUser)
     } catch (error) {
       res.status(400).json(error)
