@@ -35,7 +35,7 @@ const ProductList = () => {
     }
 
 
-   // const data = await res.json();
+
     }
  
    

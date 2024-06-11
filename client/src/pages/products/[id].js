@@ -76,7 +76,6 @@ const { productId, productName } = router.query
 }
 
 
-//console.log(productDetails);
 
   return (
     <div>
