@@ -127,7 +127,7 @@ const handleFileSave=(e)=>{
 
             <input type ="file" className={styles.choseFile} onChange={handleFileSave}></input>
         
-            {/* <UploadButton onChange={handleFileSave}/> */}
+        
                   
             <button type="submit" className={styles.loginSubmitButton}>Submit</button>
             
