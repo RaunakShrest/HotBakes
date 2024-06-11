@@ -10,16 +10,7 @@ const registerUser= async (req, res) => {
     } else {
       const hash = await bcrypt.hash(req.body.password, 0)
       if (hash) {
-        //req.body ideall looks like this
-        //req.body = {
-        //   phoneNumber:'98432232',
-        //   role:'user'
-        //.....
-        // }
-  
-        //but before doing Users.create(req.body)
-        //req.body also need avatarName
-        //so we assign new key avatarName to req.body
+
         req.body.password = hash
         req.body.itemCarts= [];
         req.body.avatarName= req?.file?.filename 
