@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema({
     // type changed into string beacuse quantity is not working
     //userCarts: [{productId: {type: mongoose.Schema.Types.String, ref: 'Products'}, productQuantity: {type:String}, productName: {type:String}}]
       
-  //  userCarts: [{productId: {type: string}, productQuantity: {type:String}, productName: {type:String}}]
+
   });
   
   const Orders = mongoose.model('Orders', orderSchema);
