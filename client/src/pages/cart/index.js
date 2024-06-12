@@ -187,23 +187,4 @@ const handleProceed =async()=>{
         };
 
 export default Cart;
-  // useEffect(() => {
-  //           const fetchProducts = async () => {
-  //               try {
-  //                   const response = await fetch('http://localhost:4000/product');
-  //                   const data = await response.json();
-  //                   setProductItems({data:data.productItems});
-  //                   setIsLoading(false);
-  //               } catch (error) {
-  //                   console.error('Error fetching products:', error);
-  //               }
-  //           };
-    
-  //           fetchProducts();
-    
-  //           const interval = setInterval(fetchProducts, 2000);
-    
-  //           return () => {
-  //               clearInterval(interval);
-  //           };
-  //       }, []);
+
