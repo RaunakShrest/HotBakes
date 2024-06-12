@@ -18,7 +18,6 @@ const orderSchema = new mongoose.Schema({
     
     //userCarts: [{productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Products'}, productQuantity: {type:String}, productName: {type:String}}]
 
-    // type changed into string beacuse quantity is not working
     //userCarts: [{productId: {type: mongoose.Schema.Types.String, ref: 'Products'}, productQuantity: {type:String}, productName: {type:String}}]
       
 
