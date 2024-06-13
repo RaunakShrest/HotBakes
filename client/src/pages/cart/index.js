@@ -154,7 +154,7 @@ const handleProceed =async()=>{
         <h2 >Cart-Totals</h2>
         </div>
         <div className={styles.overallTotalText}>
-        <h4 >Overall Total:</h4> {/* Display the overall total */}
+        <h4 >Overall Total:</h4> 
         </div>
         <div className={styles.totalPrice}>
         <h4 className="font-titleFont font-bold text-lg"> Rs:{totalPrice}</h4>
