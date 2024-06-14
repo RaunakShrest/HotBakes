@@ -22,14 +22,10 @@ const Home = (props)=> {
     const handleLogout = () => {
         dispatch(logout())  
       }
-      /*const handleProduct=()=>{
-        router.push('/products')
-
-      } */
     return (
       <div className={styles.hero}>
       <AdminHeader/>
-        {/* <button type='Logout' onClick={handleLogout}>Logout</button> */}
+       
       <Banner/>
 
       <ProductUI/>
