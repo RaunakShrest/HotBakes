@@ -69,8 +69,8 @@ Authorization
     - [x] Add to cart
     - [x] View cart items
     - [x] View overall totals
-    - [x] Pagination
-    - [x] Search features
+    - [x] Pagination.
+    - [x] Search features.
     - [x] Purchase and create orders.
     - [x] View order history .
 
