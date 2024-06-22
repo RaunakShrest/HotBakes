@@ -5,7 +5,7 @@ import React from 'react';
  import Link from 'next/link'
  import { Button, message } from 'antd';
  import { useState } from 'react';
- //import styles from './register.module.css';
+
  import { useRouter } from "next/router";
  import { logout } from '../../redux/reducerSlice/userSlice'
 import { useDispatch } from 'react-redux';

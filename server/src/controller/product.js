@@ -14,10 +14,8 @@ const registerProduct= async (req, res) => {
 
        const countProduct = async (req,res)=>{
          const countProduct = await Products.countDocuments()
-        //  console.log(countProduct);
          try {
            const countProduct = await Products.countDocuments()
-        //  console.log(countProduct);
          res.status(200).json(countProduct)
          } catch (error) {
            res.status(400).json(error)
@@ -46,7 +44,6 @@ const registerProduct= async (req, res) => {
         if(data){
           res.json({
             productsList:data,
-            //totalCount:totalCount
           })
         } else{
         res.json("No products found") 
