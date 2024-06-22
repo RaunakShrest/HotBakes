@@ -44,7 +44,6 @@ const registerProduct= async (req, res) => {
         if(data){
           res.json({
             productsList:data,
-            //totalCount:totalCount
           })
         } else{
         res.json("No products found") 

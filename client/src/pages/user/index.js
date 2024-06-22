@@ -20,10 +20,6 @@ const Home = (props)=> {
     const handleLogout = () => {
         dispatch(logout())  
       }
-      /*const handleProduct=()=>{
-        router.push('/products')
-
-      } */
 
 
     return (
