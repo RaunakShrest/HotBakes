@@ -85,18 +85,8 @@ const handleProceed =async()=>{
     
   }
 
-  // const requestOptions = {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({totalPrice})
-  // };
   
-   
-  //   const data= await res.json()
-  //   if(data){
-  //     message.success("Your order has been sucessfully placed")
-  //   }
-  // } 
+  
   fetchCartItems()
   
    
